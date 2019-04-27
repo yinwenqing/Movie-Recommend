@@ -81,7 +81,7 @@ object DataLoader {
   val MONGODB_RATING_COLLECTION = "Rating"
   val MONGODB_TAG_COLLECTION = "Tag"
 
-  val ES_MOVIE_INDEX = ""
+  val ES_MOVIE_INDEX = "Movie"
 
 
   //程序的入口
