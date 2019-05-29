@@ -2,37 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1bed4e6d-22e3-489a-91fb-a63ae6f248ff" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/recommender/OfflineRecommender/src/main/scala/com/ywq/offline/ALSTrainer.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/recommender/OfflineRecommender/src/main/scala/com/ywq/offline/OfflineRecommender2.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/recommender/dataLoader/src/main/scala/com/ywq/dataloader/DataLoad2.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/scala_compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/scala_compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MovieRecommendSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MovieRecommendSystem.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender/OfflineRecommender/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/OfflineRecommender/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender/OfflineRecommender/src/main/scala/com/ywq/offline/OfflineRecommender.scala" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/OfflineRecommender/src/main/scala/com/ywq/offline/OfflineRecommender.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender/dataLoader/src/main/scala/com/ywq/dataloader/DataLoader.scala" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/dataLoader/src/main/scala/com/ywq/dataloader/DataLoader.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/DataLoader$$anonfun$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/DataLoader$$anonfun$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/DataLoader$$anonfun$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/DataLoader$$anonfun$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/DataLoader$$anonfun$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/DataLoader$$anonfun$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/DataLoader$$anonfun$storeDataInES$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/DataLoader$$anonfun$storeDataInES$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/DataLoader$$typecreator2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/DataLoader$$typecreator2$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/DataLoader$$typecreator4$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/DataLoader$$typecreator4$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/DataLoader$$typecreator6$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/DataLoader$$typecreator6$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/DataLoader$.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/DataLoader$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/ESConfig$.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/ESConfig$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/ESConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/ESConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/MongoConf$.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/MongoConf$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/MongoConf.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/MongoConf.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/Movie$.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/Movie$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/Movie.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/Movie.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/Rating$.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/Rating$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/Rating.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/Rating.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/Tag$.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/Tag$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/Tag.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/dataLoader/target/classes/com/ywq/dataloader/Tag.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recommender/statisticsRecommender/src/main/scala/com/ywq/statistics/statisticsRecommender.scala" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/statisticsRecommender/src/main/scala/com/ywq/statistics/statisticsRecommender.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recommender/OfflineRecommender/src/main/scala/com/ywq/offline/ALSTrainer.scala" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/OfflineRecommender/src/main/scala/com/ywq/offline/ALSTrainer.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recommender/OfflineRecommender/src/main/scala/com/ywq/offline/OfflineRecommender2.scala" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/OfflineRecommender/src/main/scala/com/ywq/offline/OfflineRecommender2.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recommender/OfflineRecommender/target/classes/com/ywq/offline/ALSTrainer$$anonfun$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/OfflineRecommender/target/classes/com/ywq/offline/ALSTrainer$$anonfun$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recommender/OfflineRecommender/target/classes/com/ywq/offline/ALSTrainer$$typecreator1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/OfflineRecommender/target/classes/com/ywq/offline/ALSTrainer$$typecreator1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recommender/OfflineRecommender/target/classes/com/ywq/offline/ALSTrainer$.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/OfflineRecommender/target/classes/com/ywq/offline/ALSTrainer$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recommender/OfflineRecommender/target/classes/com/ywq/offline/ALSTrainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/OfflineRecommender/target/classes/com/ywq/offline/ALSTrainer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recommender/OfflineRecommender/target/classes/com/ywq/offline/MongoConfig$.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/OfflineRecommender/target/classes/com/ywq/offline/MongoConfig$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recommender/OfflineRecommender/target/classes/com/ywq/offline/MongoConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/OfflineRecommender/target/classes/com/ywq/offline/MongoConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recommender/OfflineRecommender/target/classes/com/ywq/offline/OfflineRecommender$.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/OfflineRecommender/target/classes/com/ywq/offline/OfflineRecommender$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recommender/OfflineRecommender/target/classes/com/ywq/offline/OfflineRecommender.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/OfflineRecommender/target/classes/com/ywq/offline/OfflineRecommender.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -78,7 +58,7 @@
     <session id="-1356689600">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="25" />
+          <entry key="project.closed" value="26" />
           <entry key="project.open.time.1" value="3" />
           <entry key="project.open.time.16" value="3" />
           <entry key="project.open.time.17" value="2" />
@@ -96,24 +76,24 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="8" />
+          <entry key="class" value="9" />
           <entry key="csv" value="4" />
           <entry key="iml" value="1" />
           <entry key="java" value="3" />
           <entry key="properties" value="3" />
-          <entry key="scala" value="25" />
+          <entry key="scala" value="26" />
           <entry key="xml" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="8" />
+          <entry key="CLASS" value="9" />
           <entry key="CSV" value="2" />
           <entry key="IDEA_MODULE" value="1" />
           <entry key="JAVA" value="3" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="Properties" value="3" />
-          <entry key="Scala" value="25" />
+          <entry key="Scala" value="26" />
           <entry key="XML" value="8" />
         </counts>
       </usages-collector>
@@ -121,7 +101,7 @@
         <counts>
           <entry key="iml" value="7" />
           <entry key="java" value="6" />
-          <entry key="scala" value="13678" />
+          <entry key="scala" value="14019" />
           <entry key="xml" value="141" />
         </counts>
       </usages-collector>
@@ -129,7 +109,7 @@
         <counts>
           <entry key="IDEA_MODULE" value="7" />
           <entry key="JAVA" value="6" />
-          <entry key="Scala" value="13678" />
+          <entry key="Scala" value="14019" />
           <entry key="XML" value="141" />
         </counts>
       </usages-collector>
@@ -137,11 +117,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/recommender/OfflineRecommender/src/main/scala/com/ywq/offline/OfflineRecommender.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="156" column="14" selection-start-line="120" selection-start-column="5" selection-end-line="131" selection-end-column="16" />
+            <state relative-caret-position="161">
+              <caret line="71" column="5" lean-forward="true" selection-start-line="67" selection-start-column="3" selection-end-line="71" selection-end-column="5" />
               <folding>
                 <element signature="e#29#62#0" expanded="true" />
               </folding>
@@ -150,19 +130,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/recommender/OfflineRecommender/pom.xml">
+        <entry file="file://$PROJECT_DIR$/recommender/OfflineRecommender/src/main/scala/com/ywq/offline/ALSTrainer.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+            <state relative-caret-position="91">
+              <caret line="67" column="7" lean-forward="true" selection-start-line="67" selection-start-column="7" selection-end-line="67" selection-end-column="7" />
+              <folding>
+                <element signature="e#25#52#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/recommender/OfflineRecommender/src/main/scala/com/ywq/offline/OfflineRecommender2.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1000">
-              <caret line="42" selection-start-line="42" selection-end-line="42" />
+            <state relative-caret-position="596">
+              <caret line="132" column="37" selection-start-line="132" selection-start-column="37" selection-end-line="132" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -205,13 +188,13 @@
         <option value="$PROJECT_DIR$/recommender/OfflineRecommender/src/main/scala/com/ywq/offline/Off2.scala" />
         <option value="$PROJECT_DIR$/recommender/OfflineRecommender/src/main/scala/com/ywq/offline/Rating.scala" />
         <option value="$PROJECT_DIR$/recommender/OfflineRecommender/src/main/scala/com/ywq/offline/Off1.scala" />
-        <option value="$PROJECT_DIR$/recommender/OfflineRecommender/src/main/scala/com/ywq/offline/ALSTrainer.scala" />
         <option value="$PROJECT_DIR$/MovieRecommendSystem.iml" />
         <option value="$PROJECT_DIR$/recommender/dataLoader/src/main/scala/com/ywq/dataloader/DataLoader.scala" />
         <option value="$PROJECT_DIR$/recommender/dataLoader/src/main/scala/com/ywq/dataloader/DataLoad2.scala" />
         <option value="$PROJECT_DIR$/recommender/OfflineRecommender/pom.xml" />
-        <option value="$PROJECT_DIR$/recommender/OfflineRecommender/src/main/scala/com/ywq/offline/OfflineRecommender.scala" />
         <option value="$PROJECT_DIR$/recommender/OfflineRecommender/src/main/scala/com/ywq/offline/OfflineRecommender2.scala" />
+        <option value="$PROJECT_DIR$/recommender/OfflineRecommender/src/main/scala/com/ywq/offline/OfflineRecommender.scala" />
+        <option value="$PROJECT_DIR$/recommender/OfflineRecommender/src/main/scala/com/ywq/offline/ALSTrainer.scala" />
       </list>
     </option>
   </component>
@@ -277,7 +260,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="697" />
     <option name="height" value="735" />
@@ -360,8 +343,8 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559051646309" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559135799220" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/wenqing/worksapce/javaconcurrency" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -388,7 +371,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.OfflineRecommender (1)">
+  <component name="RunManager" selected="Application.ALSTrainer">
+    <configuration name="ALSTrainer" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.ywq.offline.ALSTrainer" />
+      <module name="OfflineRecommender" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ywq.offline.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DataLoad2" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.ywq.dataloader.DataLoad2" />
       <module name="dataLoader" />
@@ -408,19 +404,6 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.ywq.dataloader.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Off1" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="com.ywq.offline.Off1" />
-      <module name="OfflineRecommender" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ywq.offline.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -457,18 +440,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.OfflineRecommender" />
-      <item itemvalue="Application.Off1" />
       <item itemvalue="Application.OfflineRecommender (1)" />
       <item itemvalue="Application.DataLoad2" />
       <item itemvalue="Application.DataLoader" />
+      <item itemvalue="Application.ALSTrainer" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ALSTrainer" />
         <item itemvalue="Application.OfflineRecommender (1)" />
         <item itemvalue="Application.OfflineRecommender" />
         <item itemvalue="Application.DataLoad2" />
         <item itemvalue="Application.DataLoader" />
-        <item itemvalue="Application.Off1" />
       </list>
     </recent_temporary>
   </component>
@@ -509,12 +492,12 @@
       <workItem from="1559033829782" duration="1124000" />
       <workItem from="1559040599257" duration="2247000" />
       <workItem from="1559043319741" duration="7780000" />
-      <workItem from="1559126923794" duration="594000" />
+      <workItem from="1559126923794" duration="7729000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119387000" />
+    <option name="totallyTimeSpent" value="126522000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -526,8 +509,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25189108" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -536,7 +518,7 @@
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="0" weight="0.51452994" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.4017094" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
       <window_info anchor="bottom" id="Run" order="3" weight="0.0" />
@@ -614,13 +596,6 @@
     <entry file="file://$PROJECT_DIR$/recommender/OfflineRecommender/src/main/resources/log4j.properties">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/spark/spark-mllib_2.11/2.1.1/spark-mllib_2.11-2.1.1.jar!/org/apache/spark/ml/recommendation/ALS.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1775">
-          <caret line="71" column="6" selection-start-line="71" selection-start-column="6" selection-end-line="71" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/recommender/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-216">
@@ -676,16 +651,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/recommender/OfflineRecommender/src/main/scala/com/ywq/offline/ALSTrainer.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-          <folding>
-            <element signature="e#25#70#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/recommender/dataLoader/src/main/resources/small/ratings.csv">
       <provider selected="true" editor-type-id="csv-text-editor" />
       <provider editor-type-id="text-editor" />
@@ -714,27 +679,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/recommender/OfflineRecommender/pom.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/spark/spark-mllib_2.11/2.1.1/spark-mllib_2.11-2.1.1.jar!/org/apache/spark/ml/recommendation/ALS.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="71" column="6" selection-start-line="71" selection-start-column="6" selection-end-line="71" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/recommender/OfflineRecommender/src/main/scala/com/ywq/offline/OfflineRecommender.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="156" column="14" selection-start-line="120" selection-start-column="5" selection-end-line="131" selection-end-column="16" />
+        <state relative-caret-position="161">
+          <caret line="71" column="5" lean-forward="true" selection-start-line="67" selection-start-column="3" selection-end-line="71" selection-end-column="5" />
           <folding>
             <element signature="e#29#62#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/recommender/OfflineRecommender/pom.xml">
+    <entry file="file://$PROJECT_DIR$/recommender/OfflineRecommender/src/main/scala/com/ywq/offline/ALSTrainer.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+        <state relative-caret-position="91">
+          <caret line="67" column="7" lean-forward="true" selection-start-line="67" selection-start-column="7" selection-end-line="67" selection-end-column="7" />
+          <folding>
+            <element signature="e#25#52#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/recommender/OfflineRecommender/src/main/scala/com/ywq/offline/OfflineRecommender2.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1000">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        <state relative-caret-position="596">
+          <caret line="132" column="37" selection-start-line="132" selection-start-column="37" selection-end-line="132" selection-end-column="37" />
         </state>
       </provider>
     </entry>

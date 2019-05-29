@@ -52,12 +52,12 @@ case class MovieRecs(uid:Int, recs:Seq[Recommendation])
 
 object OfflineRecommender {
 
-  val MONGODB_RATING_COLLECTION = "Rating2"
-  val MONGODB_MOVIE_COLLECTION = "Movie2"
+  val MONGODB_RATING_COLLECTION2 = "Rating2"
+  val MONGODB_MOVIE_COLLECTION2 = "Movie2"
 
   val USER_MAX_RECOMMENDATION = 20
 
-  val USER_RECS = "UserRecs2"
+  val USER_RECS2= "UserRecs2"
 
   //入口方法
   def main(args: Array[String]): Unit = {
@@ -84,7 +84,7 @@ object OfflineRecommender {
     val ratingRDD = spark
       .read
       .option("uri",mongoConfig.uri)
-      .option("collection",MONGODB_RATING_COLLECTION)
+      .option("collection",MONGODB_RATING_COLLECTION2)
       .format("com.mongodb.spark.sql")
       .load()
       .as[MovieRating]
@@ -98,7 +98,7 @@ object OfflineRecommender {
     val movieRDD = spark
       .read
       .option("uri",mongoConfig.uri)
-      .option("collection",MONGODB_MOVIE_COLLECTION)
+      .option("collection",MONGODB_MOVIE_COLLECTION2)
       .format("com.mongodb.spark.sql")
       .load()
       .as[Movie]
@@ -130,7 +130,7 @@ object OfflineRecommender {
 
     userRecs.write
       .option("uri",mongoConfig.uri)
-      .option("collection",USER_RECS)
+      .option("collection",USER_RECS2)
       .mode("overwrite")
       .format("com.mongodb.spark.sql")
       .save()
