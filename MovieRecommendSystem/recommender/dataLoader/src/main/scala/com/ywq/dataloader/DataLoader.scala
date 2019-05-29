@@ -6,9 +6,6 @@ import com.mongodb.casbah.commons.MongoDBObject
 import com.mongodb.casbah.{MongoClient, MongoClientURI}
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.{DataFrame, SparkSession}
-import org.elasticsearch.action.admin.indices.create.CreateIndexRequest
-import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest
-import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsRequest
 import org.elasticsearch.common.settings.Settings
 import org.elasticsearch.common.transport.InetSocketTransportAddress
 import org.elasticsearch.transport.client.PreBuiltTransportClient
@@ -39,7 +36,6 @@ case class Movie(val mid: Int, val name: String, val descri: String, val timelon
   * 3.0,                          用户对于电影的评分
   * 1260759179                    用户对于电影评分的时间
   */
-
 case class Rating(val uid: Int, val mid: Int, val score: Double, val timestamp: Int)
 
 /**
@@ -49,7 +45,6 @@ case class Rating(val uid: Int, val mid: Int, val score: Double, val timestamp: 
   * Cambodia,                     标签的具体内容
   * 1170560997                    用户对电影打标签的时间
   */
-
 case class Tag(val uid: Int, val mid: Int, val tag: String, val timestamp: Int)
 
 /**
@@ -97,7 +92,7 @@ object DataLoader {
       "es.clusterName" -> "es-cluster"
     )
 
-    //需要创建爱你一个SparkConf配置
+    //需要创建一个SparkConf配置
     val sparkConf = new SparkConf().setAppName("DataLoader").setMaster(config.get("spark.cores").get);
 
     //创建一个SparkSession
@@ -178,7 +173,8 @@ object DataLoader {
     val mongoClient = MongoClient(MongoClientURI(mongoConfig.uri))
 
     //如果MongoDB中有对应的数据库，那么应该删除
-    mongoClient(mongoConfig.db)(MONGODB_MOVIE_COLLECTION).dropCollection()
+    mongoClient(mongoConfig
+      .db)(MONGODB_MOVIE_COLLECTION).dropCollection()
     mongoClient(mongoConfig.db)(MONGODB_RATING_COLLECTION).dropCollection()
     mongoClient(mongoConfig.db)(MONGODB_TAG_COLLECTION).dropCollection()
 
