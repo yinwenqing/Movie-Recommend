@@ -9,6 +9,7 @@
         <module name="dataLoader" />
         <module name="OfflineRecommender" />
         <module name="statisticsRecommender" />
+        <module name="StreamingRecommender" />
       </profile>
     </annotationProcessing>
   </component>
