@@ -60,7 +60,7 @@ object StreamingRecommender {
     //广播电影相似度矩阵
     val simMoviesMatrix = spark
       .read
-      .option("uri", config("mongo.uri"))
+      .option("uri", config("mongodb.uri"))
       .option("collection", MONGODB_MOVIE_RECS_COLLECTION)
       .format("com.mongodb.spark.sql")
       .load()
@@ -128,7 +128,7 @@ object StreamingRecommender {
 
     //从用户的队列中取出num个评论
     jedis.lrange("uid:" + uid.toString, 0, num).map { item =>
-      val attr = item.split(":")
+      val attr = item.split("\\|")
       (attr(0).trim.toInt, attr(1).trim.toDouble)
     }.toArray
   }
@@ -221,7 +221,7 @@ object StreamingRecommender {
     * @param mongoConfig    MongoDB的配置
     * @return
     */
-  def saveRecsToMongoDB(uid:Int,streamRecs:Array[(Int,Double)])(implicit mongoConfig: MongoConfig)= Unit{
+  def saveRecsToMongoDB(uid:Int,streamRecs:Array[(Int,Double)])(implicit mongoConfig: MongoConfig):Unit={
     //到StreamRecs的连接
     val streamRecsCollection=ConnHelper.mongoClient(mongoConfig.db)(MONGODB_STREAM_RECS_COLLECTION)
 

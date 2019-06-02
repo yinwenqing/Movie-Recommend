@@ -2,12 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1bed4e6d-22e3-489a-91fb-a63ae6f248ff" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/recommender/StreamingRecommender/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/recommender/StreamingRecommender/src/main/resources/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/recommender/StreamingRecommender/src/main/scala/com/ywq/streaming/StreamingRecommender.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/recommender/kakaStream/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/recommender/kakaStream/src/main/java/com/ywq/kafkaStream/Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/recommender/kakaStream/src/main/java/com/ywq/kafkaStream/LogProcessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/scala_compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/scala_compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recommender/OfflineRecommender/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/OfflineRecommender/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recommender/StreamingRecommender/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/StreamingRecommender/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recommender/StreamingRecommender/src/main/scala/com/ywq/streaming/StreamingRecommender.scala" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/StreamingRecommender/src/main/scala/com/ywq/streaming/StreamingRecommender.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recommender/StreamingRecommender/target/classes/com/ywq/streaming/StreamingRecommender$$anonfun$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/StreamingRecommender/target/classes/com/ywq/streaming/StreamingRecommender$$anonfun$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recommender/StreamingRecommender/target/classes/com/ywq/streaming/StreamingRecommender$$anonfun$main$1$$anonfun$apply$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/recommender/StreamingRecommender/target/classes/com/ywq/streaming/StreamingRecommender$$anonfun$main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/StreamingRecommender/target/classes/com/ywq/streaming/StreamingRecommender$$anonfun$main$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recommender/StreamingRecommender/target/classes/com/ywq/streaming/StreamingRecommender$.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/StreamingRecommender/target/classes/com/ywq/streaming/StreamingRecommender$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recommender/StreamingRecommender/target/classes/com/ywq/streaming/StreamingRecommender.class" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/StreamingRecommender/target/classes/com/ywq/streaming/StreamingRecommender.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recommender/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/pom.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -17,6 +26,7 @@
     <ignored path="$PROJECT_DIR$/recommender/statisticsRecommender/target/" />
     <ignored path="$PROJECT_DIR$/recommender/OfflineRecommender/target/" />
     <ignored path="$PROJECT_DIR$/recommender/StreamingRecommender/target/" />
+    <ignored path="$PROJECT_DIR$/recommender/kakaStream/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,10 +65,10 @@
     <session id="-1356689600">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="28" />
+          <entry key="project.closed" value="29" />
           <entry key="project.open.time.1" value="3" />
           <entry key="project.open.time.16" value="3" />
-          <entry key="project.open.time.17" value="3" />
+          <entry key="project.open.time.17" value="4" />
           <entry key="project.open.time.18" value="2" />
           <entry key="project.open.time.19" value="5" />
           <entry key="project.open.time.2" value="2" />
@@ -68,7 +78,7 @@
           <entry key="project.open.time.23" value="1" />
           <entry key="project.open.time.24" value="3" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="31" />
+          <entry key="project.opened" value="32" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -76,10 +86,10 @@
           <entry key="class" value="9" />
           <entry key="csv" value="4" />
           <entry key="iml" value="1" />
-          <entry key="java" value="3" />
+          <entry key="java" value="5" />
           <entry key="properties" value="6" />
           <entry key="scala" value="27" />
-          <entry key="xml" value="11" />
+          <entry key="xml" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -87,43 +97,87 @@
           <entry key="CLASS" value="9" />
           <entry key="CSV" value="2" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="3" />
+          <entry key="JAVA" value="5" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="Properties" value="6" />
           <entry key="Scala" value="27" />
-          <entry key="XML" value="11" />
+          <entry key="XML" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="iml" value="7" />
-          <entry key="java" value="6" />
+          <entry key="java" value="728" />
           <entry key="properties" value="4" />
-          <entry key="scala" value="18394" />
-          <entry key="xml" value="319" />
+          <entry key="scala" value="18403" />
+          <entry key="xml" value="394" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="IDEA_MODULE" value="7" />
-          <entry key="JAVA" value="6" />
+          <entry key="JAVA" value="728" />
           <entry key="Properties" value="4" />
-          <entry key="Scala" value="18394" />
-          <entry key="XML" value="319" />
+          <entry key="Scala" value="18403" />
+          <entry key="XML" value="394" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/recommender/StreamingRecommender/src/main/scala/com/ywq/streaming/StreamingRecommender.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="171" column="20" selection-start-line="171" selection-start-column="20" selection-end-line="171" selection-end-column="20" />
+            <state relative-caret-position="15">
+              <caret line="63" column="58" selection-start-line="63" selection-start-column="58" selection-end-line="63" selection-end-column="58" />
               <folding>
                 <element signature="e#27#74#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/recommender/kakaStream/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/recommender/kakaStream/src/main/java/com/ywq/kafkaStream/Application.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="77">
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/recommender/kakaStream/src/main/java/com/ywq/kafkaStream/LogProcessor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#336#337#0" expanded="true" />
+                <element signature="e#355#356#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/recommender/StreamingRecommender/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="146">
+              <caret line="58" column="22" selection-start-line="58" selection-start-column="22" selection-end-line="58" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -169,13 +223,16 @@
         <option value="$PROJECT_DIR$/MovieRecommendSystem.iml" />
         <option value="$PROJECT_DIR$/recommender/dataLoader/src/main/scala/com/ywq/dataloader/DataLoader.scala" />
         <option value="$PROJECT_DIR$/recommender/dataLoader/src/main/scala/com/ywq/dataloader/DataLoad2.scala" />
-        <option value="$PROJECT_DIR$/recommender/OfflineRecommender/pom.xml" />
         <option value="$PROJECT_DIR$/recommender/OfflineRecommender/src/main/scala/com/ywq/offline/OfflineRecommender2.scala" />
         <option value="$PROJECT_DIR$/recommender/OfflineRecommender/src/main/scala/com/ywq/offline/OfflineRecommender.scala" />
         <option value="$PROJECT_DIR$/recommender/OfflineRecommender/src/main/scala/com/ywq/offline/ALSTrainer.scala" />
-        <option value="$PROJECT_DIR$/recommender/StreamingRecommender/pom.xml" />
         <option value="$PROJECT_DIR$/recommender/StreamingRecommender/src/main/resources/log4j.properties" />
         <option value="$PROJECT_DIR$/recommender/StreamingRecommender/src/main/scala/com/ywq/streaming/StreamingRecommender.scala" />
+        <option value="$PROJECT_DIR$/recommender/OfflineRecommender/pom.xml" />
+        <option value="$PROJECT_DIR$/recommender/kakaStream/pom.xml" />
+        <option value="$PROJECT_DIR$/recommender/StreamingRecommender/src/main/scala/com/ywq/streaming/LogProcessor.java" />
+        <option value="$PROJECT_DIR$/recommender/StreamingRecommender/pom.xml" />
+        <option value="$PROJECT_DIR$/recommender/kakaStream/src/main/java/com/ywq/kafkaStream/Application.java" />
       </list>
     </option>
   </component>
@@ -254,6 +311,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -270,41 +330,41 @@
               <item name="MovieRecommendSystem" type="b2602c69:ProjectViewProjectNode" />
               <item name="MovieRecommendSystem" type="462c0819:PsiDirectoryNode" />
               <item name="recommender" type="462c0819:PsiDirectoryNode" />
-              <item name="OfflineRecommender" type="462c0819:PsiDirectoryNode" />
+              <item name="kakaStream" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MovieRecommendSystem" type="b2602c69:ProjectViewProjectNode" />
               <item name="MovieRecommendSystem" type="462c0819:PsiDirectoryNode" />
               <item name="recommender" type="462c0819:PsiDirectoryNode" />
-              <item name="OfflineRecommender" type="462c0819:PsiDirectoryNode" />
+              <item name="kakaStream" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MovieRecommendSystem" type="b2602c69:ProjectViewProjectNode" />
               <item name="MovieRecommendSystem" type="462c0819:PsiDirectoryNode" />
               <item name="recommender" type="462c0819:PsiDirectoryNode" />
-              <item name="OfflineRecommender" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MovieRecommendSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MovieRecommendSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="recommender" type="462c0819:PsiDirectoryNode" />
-              <item name="OfflineRecommender" type="462c0819:PsiDirectoryNode" />
+              <item name="kakaStream" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="scala" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MovieRecommendSystem" type="b2602c69:ProjectViewProjectNode" />
               <item name="MovieRecommendSystem" type="462c0819:PsiDirectoryNode" />
               <item name="recommender" type="462c0819:PsiDirectoryNode" />
-              <item name="OfflineRecommender" type="462c0819:PsiDirectoryNode" />
+              <item name="kakaStream" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="scala" type="462c0819:PsiDirectoryNode" />
-              <item name="offline" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MovieRecommendSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MovieRecommendSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="recommender" type="462c0819:PsiDirectoryNode" />
+              <item name="kakaStream" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="kafkaStream" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MovieRecommendSystem" type="b2602c69:ProjectViewProjectNode" />
@@ -345,19 +405,26 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="scala" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="MovieRecommendSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MovieRecommendSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="recommender" type="462c0819:PsiDirectoryNode" />
+              <item name="StreamingRecommender" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="scala" type="462c0819:PsiDirectoryNode" />
+              <item name="streaming" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559310141463" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559483348355" />
     <property name="last_opened_file_path" value="$USER_HOME$/Documents/wenqing/worksapce/javaconcurrency" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -386,7 +453,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.StreamingRecommender">
+  <component name="RunManager" selected="Application.Application">
     <configuration name="ALSTrainer" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.ywq.offline.ALSTrainer" />
       <module name="OfflineRecommender" />
@@ -400,12 +467,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DataLoad2" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="com.ywq.dataloader.DataLoad2" />
-      <module name="dataLoader" />
+    <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ywq.kafkaStream.Application" />
+      <module name="kakaStream" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ywq.dataloader.*" />
+          <option name="PATTERN" value="com.ywq.kafkaStream.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -445,7 +512,7 @@
       <module name="StreamingRecommender" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ywq.streaming.*" />
+          <option name="PATTERN" value="com.ywq.kafkaStream.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -456,17 +523,17 @@
     <list>
       <item itemvalue="Application.OfflineRecommender" />
       <item itemvalue="Application.OfflineRecommender (1)" />
-      <item itemvalue="Application.DataLoad2" />
       <item itemvalue="Application.ALSTrainer" />
       <item itemvalue="Application.StreamingRecommender" />
+      <item itemvalue="Application.Application" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Application" />
         <item itemvalue="Application.StreamingRecommender" />
         <item itemvalue="Application.ALSTrainer" />
         <item itemvalue="Application.OfflineRecommender (1)" />
         <item itemvalue="Application.OfflineRecommender" />
-        <item itemvalue="Application.DataLoad2" />
       </list>
     </recent_temporary>
   </component>
@@ -512,11 +579,12 @@
       <workItem from="1559291164348" duration="673000" />
       <workItem from="1559299639588" duration="1622000" />
       <workItem from="1559353453045" duration="15071000" />
+      <workItem from="1559471772246" duration="4675000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="147449000" />
+    <option name="totallyTimeSpent" value="152124000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -529,19 +597,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26701966" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2685325" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="0" weight="0.4017094" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.32991454" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.51794875" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.51965815" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.43589744" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -665,18 +732,18 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/recommender/dataLoader/src/main/resources/small/ratings.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
       <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="csv-text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/recommender/dataLoader/src/main/resources/small/rating2.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
       <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="csv-text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/recommender/dataLoader/src/main/scala/com/ywq/dataloader/DataLoader.scala">
       <provider selected="true" editor-type-id="text-editor">
@@ -691,9 +758,6 @@
           <caret line="68" column="66" selection-start-line="68" selection-start-column="66" selection-end-line="68" selection-end-column="66" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/recommender/OfflineRecommender/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/spark/spark-mllib_2.11/2.1.1/spark-mllib_2.11-2.1.1.jar!/org/apache/spark/ml/recommendation/ALS.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -716,20 +780,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/recommender/StreamingRecommender/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="635">
-          <caret line="67" column="36" selection-start-line="67" selection-start-column="36" selection-end-line="67" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/recommender/OfflineRecommender/src/main/scala/com/ywq/offline/OfflineRecommender.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="45" selection-start-line="45" selection-end-line="52" selection-end-column="57" />
-          <folding>
-            <element signature="e#29#62#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -737,9 +791,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="485">
           <caret line="67" column="7" selection-start-line="67" selection-start-column="7" selection-end-line="67" selection-end-column="7" />
-          <folding>
-            <element signature="e#25#52#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -752,10 +803,53 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/recommender/StreamingRecommender/src/main/scala/com/ywq/streaming/StreamingRecommender.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="171" column="20" selection-start-line="171" selection-start-column="20" selection-end-line="171" selection-end-column="20" />
+        <state relative-caret-position="15">
+          <caret line="63" column="58" selection-start-line="63" selection-start-column="58" selection-end-line="63" selection-end-column="58" />
           <folding>
             <element signature="e#27#74#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/recommender/OfflineRecommender/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-725">
+          <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/recommender/kakaStream/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/recommender/kakaStream/src/main/java/com/ywq/kafkaStream/LogProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#336#337#0" expanded="true" />
+            <element signature="e#355#356#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/recommender/StreamingRecommender/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="58" column="22" selection-start-line="58" selection-start-column="22" selection-end-line="58" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/recommender/kakaStream/src/main/java/com/ywq/kafkaStream/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="77">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -813,7 +907,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>StreamingRecommender</last-edited>
+          <last-edited>kakaStream</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

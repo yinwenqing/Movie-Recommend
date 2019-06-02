@@ -58,14 +58,14 @@
 
         <!-- kafka -->
         <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka</artifactId>
-            <version>0.10.2.1</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-streaming-kafka-0-10_2.11</artifactId>
             <version>${spark.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-streams</artifactId>
+            <version>0.11.0.2</version>
         </dependency>
     </dependencies>
 
