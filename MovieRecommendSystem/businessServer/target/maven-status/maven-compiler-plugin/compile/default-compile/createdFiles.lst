@@ -1,0 +1,3 @@
+com\ywq\server\rest\MovieRestApi.class
+com\ywq\server\model\core\User.class
+com\ywq\server\rest\UserRestApi.class

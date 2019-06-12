@@ -9,13 +9,13 @@ import java.util.Properties;
 public class Application {
     public static void main(String[] args) {
 
-        String input ="abc";
-        String output="recommender";
+        String input ="topic1";//???
+        String output="topic2";
 
         Properties properties=new Properties();
         properties.put(StreamsConfig.APPLICATION_ID_CONFIG,"logProcessor");
-        properties.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG,"192.168.43.31:9092");
-        properties.put(StreamsConfig.ZOOKEEPER_CONNECT_CONFIG,"192.168.43.31:2181");
+        properties.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG,"47.101.131.128:9092");
+        properties.put(StreamsConfig.ZOOKEEPER_CONNECT_CONFIG,"47.101.131.128:2181");
 
         //创建kafkaStream的配置
         StreamsConfig config=new StreamsConfig(properties);
@@ -23,8 +23,9 @@ public class Application {
         //建立kafka处理拓扑
         TopologyBuilder builder=new TopologyBuilder();
         builder.addSource("source",input)
-                .addProcessor("proess",()->new LogProcessor(),"source")
+                .addProcessor("process",()->new LogProcessor(),"source")
                 .addSink("sink",output,"process");
+
 
         KafkaStreams kafkaStreams=new KafkaStreams(builder,config);
         kafkaStreams.start();
