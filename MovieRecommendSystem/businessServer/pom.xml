@@ -93,7 +93,7 @@
                 <version>2.2</version>
                 <configuration>
                     <!-- http port -->
-                    <port>8088</port>
+                    <port>8888</port>
                     <path>/</path>
                     <contextReloadable>true</contextReloadable>
                 </configuration>
