@@ -7,14 +7,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0e1e6595-7a44-455f-82c9-cde5f37595c1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/businessServer/src/main/resources/log4j2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/businessServer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/businessServer/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/businessServer/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/businessServer/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/businessServer/target/classes/application.xml" beforeDir="false" afterPath="$PROJECT_DIR$/businessServer/target/classes/application.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/businessServer/target/classes/com/ywq/server/model/core/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/businessServer/target/classes/com/ywq/server/model/core/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/rest/UserRestApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/rest/UserRestApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/businessServer/target/classes/com/ywq/server/rest/UserRestApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/businessServer/target/classes/com/ywq/server/rest/UserRestApi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/businessServer/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/businessServer/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/businessServer/target/classes/com/ywq/server/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/businessServer/target/classes/com/ywq/server/service/UserService.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/recommender/StreamingRecommender/target/" />
     <ignored path="$PROJECT_DIR$/recommender/OfflineRecommender/target/" />
@@ -42,16 +40,17 @@
           <entry key="project.open.time.22" value="1" />
           <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.30" value="1" />
+          <entry key="project.open.time.32" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="1" />
+          <entry key="class" value="2" />
           <entry key="css" value="1" />
           <entry key="html" value="1" />
-          <entry key="java" value="9" />
+          <entry key="java" value="10" />
           <entry key="properties" value="1" />
           <entry key="ts" value="1" />
           <entry key="xml" value="11" />
@@ -59,10 +58,10 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="1" />
+          <entry key="CLASS" value="2" />
           <entry key="CSS" value="1" />
           <entry key="HTML" value="1" />
-          <entry key="JAVA" value="9" />
+          <entry key="JAVA" value="10" />
           <entry key="Properties" value="1" />
           <entry key="TypeScript" value="1" />
           <entry key="XML" value="11" />
@@ -71,7 +70,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="6" />
-          <entry key="java" value="5694" />
+          <entry key="java" value="5794" />
           <entry key="properties" value="287" />
           <entry key="ts" value="19" />
           <entry key="txt" value="21" />
@@ -81,7 +80,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="6" />
-          <entry key="JAVA" value="5694" />
+          <entry key="JAVA" value="5794" />
           <entry key="PLAIN_TEXT" value="21" />
           <entry key="Properties" value="287" />
           <entry key="TypeScript" value="19" />
@@ -100,8 +99,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/rest/UserRestApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="59">
-              <caret line="36" column="27" lean-forward="true" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
+            <state relative-caret-position="87">
+              <caret line="30" column="14" lean-forward="true" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/UserService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="37">
+              <caret line="59" column="65" selection-start-line="59" selection-start-column="65" selection-end-line="59" selection-end-column="65" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -110,28 +121,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/businessServer/pom.xml">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/mongodb/mongodb-driver/3.5.0/mongodb-driver-3.5.0.jar!/com/mongodb/util/JSON.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56">
-              <caret line="95" column="28" selection-start-line="95" selection-start-column="28" selection-end-line="95" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/businessServer/src/main/resources/log4j2.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="38" selection-start-column="38" selection-end-column="38" />
+            <state relative-caret-position="244">
+              <caret line="15" column="4" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="19" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/elasticsearch/elasticsearch/5.6.2/elasticsearch-5.6.2.jar!/org/elasticsearch/index/mapper/ObjectMapper.class">
+        <entry file="file://$PROJECT_DIR$/businessServer/src/main/resources/log4j2.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="34" column="25" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="25" />
+            <state>
+              <caret column="38" selection-start-column="38" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -220,10 +222,10 @@
         <option value="$PROJECT_DIR$/businessServer/src/main/resources/application.xml" />
         <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/core/User.java" />
         <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/request/RegisterUserRequest.java" />
-        <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/UserService.java" />
-        <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/rest/UserRestApi.java" />
         <option value="$PROJECT_DIR$/businessServer/pom.xml" />
         <option value="$PROJECT_DIR$/businessServer/src/main/resources/log4j2.xml" />
+        <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/rest/UserRestApi.java" />
+        <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/UserService.java" />
       </list>
     </option>
   </component>
@@ -304,6 +306,9 @@
         <expanded-state>
           <State />
           <State>
+            <id>Ali-Check</id>
+          </State>
+          <State>
             <id>CodeSpring CoreSpring</id>
           </State>
           <State>
@@ -315,7 +320,7 @@
         </expanded-state>
         <selected-state>
           <State>
-            <id>SpringJavaInjectionPointsAutowiringInspection</id>
+            <id>AliDeprecation</id>
           </State>
         </selected-state>
       </profile-state>
@@ -329,7 +334,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -463,16 +467,17 @@
           <select />
         </subPane>
       </pane>
+      <pane id="CatdeaLogs" />
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="CatdeaLogs" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="ObjectMapper&#9;FILE&#9;jar://C:/Users/ywq/.m2/repository/org/elasticsearch/elasticsearch/5.6.2/elasticsearch-5.6.2.jar!/org/elasticsearch/index/mapper/ObjectMapper.class" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560483405256" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560606435535" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -645,16 +650,17 @@
       <workItem from="1560343723695" duration="2215000" />
       <workItem from="1560408725331" duration="8760000" />
       <workItem from="1560482441821" duration="900000" />
+      <workItem from="1560603013538" duration="1952000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27148000" />
+    <option name="totallyTimeSpent" value="29100000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2655068" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15885022" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -665,7 +671,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.43760684" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.72136754" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.72136754" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -775,13 +781,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/UserService.java">
+    <entry file="file://$PROJECT_DIR$/businessServer/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1300">
-          <caret line="65" column="18" selection-start-line="65" selection-start-column="18" selection-end-line="65" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="2375">
+          <caret line="95" column="28" selection-start-line="95" selection-start-column="28" selection-end-line="95" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -837,27 +840,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/businessServer/src/main/resources/log4j2.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="38" selection-start-column="38" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/rest/UserRestApi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
-          <caret line="36" column="27" lean-forward="true" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
+        <state relative-caret-position="87">
+          <caret line="30" column="14" lean-forward="true" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/businessServer/pom.xml">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/mongodb/mongodb-driver/3.5.0/mongodb-driver-3.5.0.jar!/com/mongodb/util/JSON.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="95" column="28" selection-start-line="95" selection-start-column="28" selection-end-line="95" selection-end-column="28" />
+        <state relative-caret-position="244">
+          <caret line="15" column="4" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="19" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/businessServer/src/main/resources/log4j2.xml">
+    <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="38" selection-start-column="38" selection-end-column="38" />
+        <state relative-caret-position="37">
+          <caret line="59" column="65" selection-start-line="59" selection-start-column="65" selection-end-line="59" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

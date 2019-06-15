@@ -47,10 +47,17 @@ public class UserService {
         }
     }
 
+    public String serialize(Object object) {
+        StringBuilder buf = new StringBuilder();
+        JSON.serialize(object, buf);
+        return buf.toString();
+    }
+
     //将Document装换成为User
     private User documentToUser(Document document){
+        StringBuilder buf = new StringBuilder();
         try {
-            User user = objectMapper.readValue(JSON.serialize(document),User.class);
+            User user = objectMapper.readValue(serialize(document),User.class);
             return user;
         } catch (IOException e) {
             e.printStackTrace();

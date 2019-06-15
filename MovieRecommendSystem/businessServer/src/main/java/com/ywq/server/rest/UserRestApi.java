@@ -32,10 +32,10 @@ public class UserRestApi {
      */
     @RequestMapping(path="/register",produces = "application/json", method= RequestMethod.GET)
     @ResponseBody
-    public User registerUser(@RequestParam("username") String username, @RequestParam("password") String password, Model model){
+    public Model registerUser(@RequestParam("username") String username, @RequestParam("password") String password, Model model){
 
         model.addAttribute("success",userService.registerUser(new RegisterUserRequest(username,password)));
-        return null;
+        return model;
     }
 
     //需要提供用户登录功能
