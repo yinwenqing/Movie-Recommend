@@ -6,7 +6,9 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.util.JSON;
 import com.ywq.server.model.core.User;
+import com.ywq.server.model.request.LoginUserRequest;
 import com.ywq.server.model.request.RegisterUserRequest;
+import com.ywq.server.model.request.UpdateUserGenresRequest;
 import com.ywq.server.utils.Constant;
 import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,15 +31,15 @@ public class UserService {
     private MongoCollection<Document> userCollection;
 
     //用于获取User表连接
-    private MongoCollection<Document> getUserCollection(){
-        if(null==userCollection){
-            this.userCollection=mongoClient.getDatabase(Constant.MONGO_DATABASE).getCollection(Constant.MONGO_USER_COLLECTION);
+    private MongoCollection<Document> getUserCollection() {
+        if (null == userCollection) {
+            this.userCollection = mongoClient.getDatabase(Constant.MONGO_DATABASE).getCollection(Constant.MONGO_USER_COLLECTION);
         }
         return userCollection;
     }
 
     //将User装换成一个Document
-    private Document userToDocument(User user){
+    private Document userToDocument(User user) {
         try {
             Document document = Document.parse(objectMapper.writeValueAsString(user));
             return document;
@@ -54,10 +56,10 @@ public class UserService {
     }
 
     //将Document装换成为User
-    private User documentToUser(Document document){
+    private User documentToUser(Document document) {
         StringBuilder buf = new StringBuilder();
         try {
-            User user = objectMapper.readValue(serialize(document),User.class);
+            User user = objectMapper.readValue(serialize(document), User.class);
             return user;
         } catch (IOException e) {
             e.printStackTrace();
@@ -65,30 +67,68 @@ public class UserService {
         }
     }
 
-    public void fun(){
+    public void fun() {
 
     }
 
     /**
      * 用于提供注册用户的服务
+     *
      * @param request
      * @return
      */
-    public boolean registerUser(RegisterUserRequest request){
+    public boolean registerUser(RegisterUserRequest request) {
+
+        //判断是否由相同的用户名已经注册
+        if(getUserCollection().find(new Document("username",request.getUsername())).first()!=null) {
+            return false;
+        }
 
         //创建一个用户
-        User user=new User();
+        User user = new User();
         user.setUsername(request.getUsername());
         user.setPassword(request.getPassword());
         user.setFirst(true);
 
         //插入一个用户
-        Document document=userToDocument(user);
-        if(null == document){
+        Document document = userToDocument(user);
+        if (null == document) {
             return false;
         }
         getUserCollection().insertOne(document);
         return true;
+    }
+
+    /**
+     * 用于提供用户的登录
+     *
+     * @param request
+     * @return
+     */
+    public boolean loginUser(LoginUserRequest request) {
+
+        //需要找到这个用户
+        Document document = getUserCollection().find(new Document("username", request.getUsername())).first();
+        if (null == document) {
+            return false;
+        }
+        User user = documentToUser(document);
+
+        //验证密码
+        if (null == user) {
+            return false;
+        }
+        return user.getPassword().compareTo(request.getPassword()) == 0;
+    }
+
+    /**
+     * 用于更新用户第一次登录选择的电影类别
+     * @param request
+     * @return
+     */
+    public void updateUserGenres(UpdateUserGenresRequest request){
+        getUserCollection().updateOne(new Document("username",request.getUsername()),new Document().append("$set",new Document("$genres",request.getGenres())));
+        getUserCollection().updateOne(new Document("username",request.getUsername()),new Document().append("$set",new Document("first",false)));
     }
 
 }

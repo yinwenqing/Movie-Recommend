@@ -1,13 +1,30 @@
 package com.ywq.server.rest;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 //用于处理Movie相关的功能
+@Controller
+@RequestMapping("/rest/movies")
 public class MovieRestApi {
 
     //***********首页功能**********
-    //提供获取实时推荐信息的接口
-    public Model getRealtimeRecommendations(String username, Model model){
+
+    /**
+     * 提供获取实时推荐信息的接口[混合推荐]
+     * 访问：url: /rest/movies/stream?username=abc&num=10
+     * 返回：{success:true,movies:[]}
+     * @param username
+     * @param sum
+     * @param model
+     * @return
+     */
+    @RequestMapping(path="/stream",produces="application/json",method= RequestMethod.GET)
+    public Model getRealtimeRecommendations(@RequestParam("username") String username, @RequestParam("number") int sum, Model model){
+
         return null;
     }
 
