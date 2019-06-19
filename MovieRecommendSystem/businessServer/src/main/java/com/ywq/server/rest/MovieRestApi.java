@@ -1,15 +1,30 @@
 package com.ywq.server.rest;
 
+import com.ywq.server.model.core.Movie;
+import com.ywq.server.model.core.User;
+import com.ywq.server.model.recom.Recommendation;
+import com.ywq.server.model.request.GetStreamRecsRequest;
+import com.ywq.server.service.RecommenderService;
+import com.ywq.server.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 //用于处理Movie相关的功能
 @Controller
 @RequestMapping("/rest/movies")
 public class MovieRestApi {
+
+    @Autowired
+    private RecommenderService recommenderService;
+
+    @Autowired
+    private UserService userService;
 
     //***********首页功能**********
 
@@ -24,8 +39,11 @@ public class MovieRestApi {
      */
     @RequestMapping(path="/stream",produces="application/json",method= RequestMethod.GET)
     public Model getRealtimeRecommendations(@RequestParam("username") String username, @RequestParam("number") int sum, Model model){
-
-        return null;
+        User user= userService.findUserByUsername(username);
+        List<Recommendation> recommendations= recommenderService.getStreamRecsMovies(new GetStreamRecsRequest(user.getUid(),sum));
+        List<Movie>
+        model .addAttribute("success",true);
+        return model;
     }
 
     //提供获取离线推荐信息的接口

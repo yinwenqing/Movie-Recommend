@@ -33,16 +33,16 @@ public class RecommenderService {
     @Autowired
     private TransportClient esClient;
 
-    /**
+    /**获取混合推荐结果【用在当前电影 的相似中】
      * @param request
      * @return
      */
     public List<Recommendation> getHybirdRecommendations(GetHybirdRecommendationRequest request) {
         //获得实时推荐结果
-        List<Recommendation> streamRecs=getStreamRecsMovies(new GetStreamRecsRequest(request.getUid(),request.getNum()));
+        //List<Recommendation> streamRecs=getStreamRecsMovies(new GetStreamRecsRequest(request.getUid(),request.getNum()));
 
         //获得ALS离线推荐结果
-        List<Recommendation> userRecs = getUserCFMovies(new GetUserCFRequest(request.getUid(),request.getNum()));
+        //List<Recommendation> userRecs = getUserCFMovies(new GetUserCFRequest(request.getUid(),request.getNum()));
 
         //获得基于内容的推荐结果
 

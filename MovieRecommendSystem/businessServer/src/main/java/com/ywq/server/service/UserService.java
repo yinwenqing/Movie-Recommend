@@ -131,4 +131,14 @@ public class UserService {
         getUserCollection().updateOne(new Document("username",request.getUsername()),new Document().append("$set",new Document("first",false)));
     }
 
+    //通过用户名查询一个用户
+    public User findUserByUsername(String username){
+        Document document = getUserCollection().find(new Document("username", username)).first();
+        if(null == document || document.isEmpty()){
+            return null;
+        }
+        return documentToUser(document);
+    }
+
+
 }
