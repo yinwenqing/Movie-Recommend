@@ -1,5 +1,6 @@
 package com.ywq.server.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -37,6 +39,12 @@ public class MovieService {
     private Movie documentToMovie(Document document){
         try {
             Movie movie = objectMapper.readValue(JSON.serialize(document), Movie.class);
+            Document score = mongoClient.getDatabase(Constant.MONGO_DATABASE).getCollection(Constant.MONGO_AVERAGE_MOVIES).find(Filters.eq("mid",movie.getMid())).first();
+            if(score==null||score.isEmpty()){
+                movie.setScore(0D);
+            }else{
+                movie.setScore(score.getDouble("avg"));
+            }
             return movie;
         } catch (IOException e) {
             e.printStackTrace();
@@ -44,12 +52,22 @@ public class MovieService {
         }
     }
 
-    public List<Movie> getMoviesByMids(List<Integer> ids){
-        FindIterable<Document> documents=getMongoCollection().find(Filters.in("mid", ids));
-
-
-
+    private Document movieToDocument(Movie movie){
+        try {
+            Document document = Document.parse(objectMapper.writeValueAsString(movie));
+            return document;
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
-    public
+    public List<Movie> getMoviesByMids(List<Integer> ids){
+        List<Movie> result = new ArrayList<>();
+        FindIterable<Document> documents=getMongoCollection().find(Filters.in("mid", ids));
+        for(Document item:documents){
+            result.add(documentToMovie(item));
+        }
+        return result;
+    }
 }
