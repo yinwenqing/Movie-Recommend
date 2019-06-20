@@ -1,23 +1,24 @@
 package com.ywq.server.service;
 
 import com.mongodb.MongoClient;
+import com.mongodb.QueryBuilder;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Sorts;
 import com.ywq.server.model.recom.Recommendation;
-import com.ywq.server.model.request.GetContentBasedRecommendationRequest;
-import com.ywq.server.model.request.GetHybirdRecommendationRequest;
-import com.ywq.server.model.request.GetStreamRecsRequest;
-import com.ywq.server.model.request.GetUserCFRequest;
+import com.ywq.server.model.request.*;
 import com.ywq.server.utils.Constant;
 import org.bson.Document;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.transport.TransportClient;
+import org.elasticsearch.index.query.FuzzyQueryBuilder;
 import org.elasticsearch.index.query.MoreLikeThisQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.print.Doc;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +33,16 @@ public class RecommenderService {
 
     @Autowired
     private TransportClient esClient;
+
+    private MongoDatabase mongoDatabase;
+
+    private MongoDatabase getMongoDatabase(){
+        if(null== mongoDatabase){
+            this.mongoDatabase=mongoClient.getDatabase(Constant.MONGO_DATABASE);
+        }
+        return this.mongoDatabase;
+    }
+
 
     /**获取混合推荐结果【用在当前电影 的相似中】
      * @param request
@@ -49,7 +60,6 @@ public class RecommenderService {
         //返回结果
 
         return null;
-
     }
 
     /**
@@ -82,7 +92,7 @@ public class RecommenderService {
      * @return
      */
     public List<Recommendation> getUserCFMovies(GetUserCFRequest request){
-        MongoCollection<Document> userCFCollection =mongoClient.getDatabase(Constant.MONGO_DATABASE).getCollection(Constant.MONGO_USER_RECS_COLLECTION);
+        MongoCollection<Document> userCFCollection =getMongoDatabase().getCollection(Constant.MONGO_USER_RECS_COLLECTION);
         Document document = userCFCollection.find(new Document("uid",request.getUid())).first();
         return parseDocument(document,request.getSum());
     }
@@ -106,7 +116,7 @@ public class RecommenderService {
      * @return
      */
     public List<Recommendation> getStreamRecsMovies(GetStreamRecsRequest request) {
-        MongoCollection<Document> streamRecsCollection = mongoClient.getDatabase(Constant.MONGO_DATABASE).getCollection(Constant.MONGO_STREAN_RECS_COLLECTION);
+        MongoCollection<Document> streamRecsCollection = getMongoDatabase().getCollection(Constant.MONGO_STREAN_RECS_COLLECTION);
         Document document=streamRecsCollection.find(new Document("uid", request.getUid())).first();
         List<Recommendation> result = new ArrayList<>();
         if(null==document||document.isEmpty()){
@@ -117,5 +127,77 @@ public class RecommenderService {
             result.add(new Recommendation(Integer.parseInt(para[0]),Double.parseDouble(para[1])));
         }
         return result.subList(0,result.size()>request.getNum()?request.getNum():result.size());
+    }
+
+    /**
+     * 获取电影类别的TOP电影，用于处理冷启动问题
+     * @param request
+     * @return
+     */
+    public List<Recommendation> getGenresTopMovies(GetGenresTopMoviesRequest request) {
+        Document genresDocument = getMongoDatabase().getCollection(Constant.MONGO_GENRES_TOP_MOVIES).find(new Document("genres", request.getGenres())).first();
+        List<Recommendation> recommendations=new ArrayList<>();
+        if(genresDocument == null || genresDocument.isEmpty()){
+            return recommendations;
+        }
+        return parseDocument(genresDocument,request.getNum());
+
+
+    }
+
+    /**
+     * 获取最热电影
+     * @param request
+     * @return
+     */
+    public List<Recommendation> getHotRecommendations(GetHotRecommendationRequest request){
+        FindIterable<Document> documents = getMongoDatabase().getCollection(Constant.MONGO_RATE_MORE_RECENTLY_MOVIES).find().sort(Sorts.descending("yearmouth"));
+        List<Recommendation> recommendations=new ArrayList<>();
+        for (Document item : documents) {
+            recommendations.add(new Recommendation(item.getInteger("mid"),0D));
+        }
+        return recommendations.subList(0,recommendations.size()>request.getSum()?request.getSum():recommendations.size());
+    }
+
+    /**
+     * 获取优质电影的集合
+     * @param request
+     * @return
+     */
+    public List<Recommendation> getRateMoreMovies(GetRateMoreMoviesRequest request){
+        FindIterable<Document> documents = getMongoDatabase().getCollection(Constant.MONGO_RATE_MORE_MOVIES).find().sort(Sorts.descending("count"));
+        List<Recommendation> recommendations=new ArrayList<>();
+        for (Document item : documents) {
+            recommendations.add(new Recommendation(item.getInteger("mid"),0D));
+        }
+        return recommendations.subList(0,recommendations.size()>request.getNum()?request.getNum():recommendations.size());
+
+    }
+
+    /**
+     * 获取新电影的集合
+     * @param request
+     * @return
+     */
+    public List<Recommendation> getNewMovies(GetNewMoviesRequest request){
+        FindIterable<Document> documents = getMongoDatabase().getCollection(Constant.MONGO_MOVIE_COLLECTION).find().sort(Sorts.descending("issue"));
+        List<Recommendation> recommendations=new ArrayList<>();
+        for (Document item : documents) {
+            recommendations.add(new Recommendation(item.getInteger("mid"),0D));
+        }
+        return recommendations.subList(0,recommendations.size()>request.getNum()?request.getNum():recommendations.size());
+
+    }
+
+    /**
+     * 模糊检索主题
+     * @param request
+     * @return
+     */
+    public List<Recommendation> getFuzzyMovies(GetFuzzySearchMoviesRequest request){
+        FuzzyQueryBuilder queryBuilder = QueryBuilders.fuzzyQuery("name", request.getQuery());
+        SearchResponse searchResponse = esClient.prepareSearch(Constant.ES_INDEX).setQuery(queryBuilder).setSize(request.getNum()).execute().actionGet();
+        return parseESResponse(searchResponse);
+
     }
 }

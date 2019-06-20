@@ -3,20 +3,18 @@ package com.ywq.server.rest;
 import com.ywq.server.model.core.Movie;
 import com.ywq.server.model.core.User;
 import com.ywq.server.model.recom.Recommendation;
-import com.ywq.server.model.request.GetStreamRecsRequest;
+import com.ywq.server.model.request.*;
 import com.ywq.server.service.MovieService;
 import com.ywq.server.service.RecommenderService;
 import com.ywq.server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 //用于处理Movie相关的功能
 @Controller
@@ -35,20 +33,26 @@ public class MovieRestApi {
     //***********首页功能**********
 
     /**
-     * 提供获取实时推荐信息的接口[混合推荐]
+     * 提供获取实时推荐信息的接口[混合推荐]      需要考虑  冷启动问题
      * 访问：url: /rest/movies/stream?username=abc&num=10
      * 返回：{success:true,movies:[]}
      *
      * @param username
-     * @param sum
+     * @param num
      * @param model
      * @return
      */
     @RequestMapping(path = "/stream", produces = "application/json", method = RequestMethod.GET)
     @ResponseBody
-    public Model getRealtimeRecommendations(@RequestParam("username") String username, @RequestParam("number") int sum, Model model) {
+    public Model getRealtimeRecommendations(@RequestParam("username") String username, @RequestParam("number") int num, Model model) {
         User user = userService.findUserByUsername(username);
-        List<Recommendation> recommendations = recommenderService.getStreamRecsMovies(new GetStreamRecsRequest(user.getUid(), sum));
+        List<Recommendation> recommendations = recommenderService.getStreamRecsMovies(new GetStreamRecsRequest(user.getUid(), num));
+        //防止冷启动出现的问题
+        if (recommendations == null) {
+            Random random = new Random();
+            recommendations=recommenderService.getGenresTopMovies(new GetGenresTopMoviesRequest(user.getGenres().get(random.nextInt(user.getGenres().size())),num));
+
+        }
         List<Integer> ids = new ArrayList<>();
         for (Recommendation recom : recommendations) {
             ids.add(recom.getMid());
@@ -60,27 +64,51 @@ public class MovieRestApi {
     }
 
     //提供获取离线推荐信息的接口
-    @RequestMapping(path = "/stream", produces = "application/json", method = RequestMethod.GET)
+    @RequestMapping(path = "/offline", produces = "application/json", method = RequestMethod.GET)
     @ResponseBody
-    public Model getOfflineRecommender(String username, Model model) {
+    public Model getOfflineRecommender(@RequestParam("username") String username, @RequestParam("number") int num, Model model) {
+        User user = userService.findUserByUsername(username);
+        List<Recommendation> recommendations = recommenderService.getUserCFMovies(new GetUserCFRequest(user.getUid(),num));
+        //防止冷启动出现的问题
+        if (recommendations == null) {
+            Random random = new Random();
+            recommendations=recommenderService.getGenresTopMovies(new GetGenresTopMoviesRequest(user.getGenres().get(random.nextInt(user.getGenres().size())),num));
 
-        return null;
+        }
+        List<Integer> ids = new ArrayList<>();
+        for (Recommendation recom : recommendations) {
+            ids.add(recom.getMid());
+        }
+        List<Movie> result = movieService.getMoviesByMids(ids);
+        model.addAttribute("success", true);
+        model.addAttribute("movies", result);
+        return model;
     }
 
     //提供获取热门推荐信息的接口
-    public Model getHotRecommendations(Model model) {
-
-        return null;
+    @RequestMapping(path = "/host", produces = "application/json", method = RequestMethod.GET)
+    @ResponseBody
+    public Model getHotRecommendations(@RequestParam("number") int num,Model model) {
+        model.addAttribute("success",true);
+        model.addAttribute("movies",recommenderService.getHotRecommendations(new GetHotRecommendationRequest(num)));
+        return model ;
     }
 
     //提供获取优质电影的接口
-    public Model getRateMoreRecommendations(Model model) {
-
+    @RequestMapping(path = "/rate", produces = "application/json", method = RequestMethod.GET)
+    @ResponseBody
+    public Model getRateMoreRecommendations(@RequestParam("number") int num,Model model) {
+        model.addAttribute("success",true);
+        model.addAttribute("movies",recommenderService.getHotRecommendations(new GetHotRecommendationRequest(num)));
         return null;
     }
 
     //获取最新电影的信息的接口
-    public Model getNewRecommendations(Model model) {
+    @RequestMapping(path = "/new", produces = "application/json", method = RequestMethod.GET)
+    @ResponseBody
+    public Model getNewRecommendations(@RequestParam("number") int num,Model model) {
+        model.addAttribute("success",true);
+        model.addAttribute("movies",recommenderService.getNewMovies(new GetNewMoviesRequest(num)));
 
         return null;
     }
@@ -89,15 +117,25 @@ public class MovieRestApi {
     //***********模糊检索***********
 
     //提供基于名称或者描述的模糊检索功能
-    public Model getFuzzySearchMovies(String query, Model model) {
-        return null;
+    @RequestMapping(path = "/query", produces = "application/json", method = RequestMethod.GET)
+    @ResponseBody
+    public Model getFuzzySearchMovies(@RequestParam("query") String query, @RequestParam("number") int num,Model model) {
+        model.addAttribute("success",true);
+        model.addAttribute("movies",recommenderService.getFuzzyMovies(new GetFuzzySearchMoviesRequest(query,num)));
+
+        return model;
     }
 
 
     //***********电影的详细页面***********
 
     //获取单个电影的信息
-    public Model getMovieInfo(int mid) {
+    @RequestMapping(path = "/info/{id}", produces = "application/json", method = RequestMethod.GET)
+    @ResponseBody
+    public Model getMovieInfo(@PathVariable("mid") int mid,Model model) {
+        model.addAttribute("success",true);
+        model.addAttribute("movies",movieService.findMovieInfo(mid));
+
         return null;
     }
 

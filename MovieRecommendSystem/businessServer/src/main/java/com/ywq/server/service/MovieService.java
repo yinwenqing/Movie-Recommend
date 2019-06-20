@@ -29,7 +29,7 @@ public class MovieService {
 
     private MongoCollection<Document> movieCollection;
 
-    private MongoCollection<Document> getMongoCollection(){
+    private MongoCollection<Document> getMovieCollection(){
         if(null == movieCollection){
             this.movieCollection=mongoClient.getDatabase(Constant.MONGO_DATABASE).getCollection(Constant.MONGO_MOVIE_COLLECTION);
         }
@@ -64,10 +64,20 @@ public class MovieService {
 
     public List<Movie> getMoviesByMids(List<Integer> ids){
         List<Movie> result = new ArrayList<>();
-        FindIterable<Document> documents=getMongoCollection().find(Filters.in("mid", ids));
+        FindIterable<Document> documents=getMovieCollection().find(Filters.in("mid", ids));
         for(Document item:documents){
             result.add(documentToMovie(item));
         }
         return result;
     }
+
+    //获取电影信息
+    public Movie findMovieInfo(int mid){
+        Document movieDocument = getMovieCollection().find(new Document("mid", mid)).first();
+        if(movieDocument==null|| movieDocument.isEmpty()){
+            return null;
+        }
+        return documentToMovie(movieDocument);
+    }
+
 }
