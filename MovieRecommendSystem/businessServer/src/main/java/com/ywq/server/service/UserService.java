@@ -5,16 +5,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.util.JSON;
+import com.ywq.java.model.Constant;
 import com.ywq.server.model.core.User;
 import com.ywq.server.model.request.LoginUserRequest;
 import com.ywq.server.model.request.RegisterUserRequest;
 import com.ywq.server.model.request.UpdateUserGenresRequest;
-import com.ywq.server.utils.Constant;
 import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.print.Doc;
 import java.io.IOException;
 
 //对于用户具体处理业务服务的服务类

@@ -1,4 +1,4 @@
-package com.ywq.server.utils;
+package com.ywq.java.model;
 
 //定义猪呢个股业务系统的常量
 public class Constant {

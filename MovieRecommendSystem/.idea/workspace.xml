@@ -7,9 +7,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0e1e6595-7a44-455f-82c9-cde5f37595c1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/core/Tag.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/TagService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/core/Rating.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/request/GetGenresMoviesRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/request/GetItemCFMoviesRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/RatingService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coreModel/coreModel.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coreModel/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coreModel/src/main/scala/com/ywq/scala/model/Model.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/scala_compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/scala_compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/businessServer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/businessServer/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/request/GetHybirdRecommendationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/request/GetHybirdRecommendationRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/rest/MovieRestApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/rest/MovieRestApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/MovieService.java" beforeDir="false" afterPath="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/MovieService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/RecommenderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/RecommenderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/TagService.java" beforeDir="false" afterPath="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/TagService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/utils/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/coreModel/src/main/java/com/ywq/java/model/Constant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recommender/dataLoader/src/main/scala/com/ywq/dataloader/DataLoader.scala" beforeDir="false" afterPath="$PROJECT_DIR$/recommender/dataLoader/src/main/scala/com/ywq/dataloader/DataLoader.scala" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/recommender/StreamingRecommender/target/" />
     <ignored path="$PROJECT_DIR$/recommender/OfflineRecommender/target/" />
@@ -20,6 +39,7 @@
     <ignored path="$PROJECT_DIR$/recommender/target/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/website/target/" />
+    <ignored path="$PROJECT_DIR$/coreModel/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,19 +64,20 @@
     <session id="-1356689600">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="15" />
+          <entry key="project.closed" value="16" />
           <entry key="project.open.time.17" value="2" />
           <entry key="project.open.time.20" value="2" />
           <entry key="project.open.time.21" value="2" />
           <entry key="project.open.time.22" value="2" />
-          <entry key="project.open.time.23" value="2" />
+          <entry key="project.open.time.23" value="3" />
           <entry key="project.open.time.24" value="1" />
+          <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.28" value="1" />
           <entry key="project.open.time.30" value="2" />
           <entry key="project.open.time.32" value="1" />
           <entry key="project.open.time.43" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="17" />
+          <entry key="project.opened" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -65,11 +86,12 @@
           <entry key="class" value="2" />
           <entry key="css" value="1" />
           <entry key="html" value="1" />
-          <entry key="java" value="39" />
+          <entry key="java" value="53" />
           <entry key="jsp" value="1" />
           <entry key="properties" value="1" />
+          <entry key="scala" value="4" />
           <entry key="ts" value="1" />
-          <entry key="xml" value="16" />
+          <entry key="xml" value="20" />
           <entry key="xsd" value="1" />
         </counts>
       </usages-collector>
@@ -78,32 +100,35 @@
           <entry key="CLASS" value="2" />
           <entry key="CSS" value="1" />
           <entry key="HTML" value="1" />
-          <entry key="JAVA" value="39" />
+          <entry key="JAVA" value="53" />
           <entry key="JSP" value="1" />
           <entry key="Properties" value="1" />
+          <entry key="Scala" value="4" />
           <entry key="TypeScript" value="1" />
           <entry key="UML" value="1" />
-          <entry key="XML" value="17" />
+          <entry key="XML" value="21" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="6" />
-          <entry key="java" value="14094" />
+          <entry key="java" value="15790" />
           <entry key="properties" value="287" />
+          <entry key="scala" value="2" />
           <entry key="ts" value="19" />
           <entry key="txt" value="21" />
-          <entry key="xml" value="258" />
+          <entry key="xml" value="352" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="6" />
-          <entry key="JAVA" value="14094" />
+          <entry key="JAVA" value="15790" />
           <entry key="PLAIN_TEXT" value="21" />
           <entry key="Properties" value="287" />
+          <entry key="Scala" value="2" />
           <entry key="TypeScript" value="19" />
-          <entry key="XML" value="258" />
+          <entry key="XML" value="352" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
@@ -118,8 +143,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2950">
-              <caret line="133" column="17" selection-start-line="133" selection-start-column="17" selection-end-line="133" selection-end-column="17" />
+            <state relative-caret-position="178">
+              <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -128,62 +153,46 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/RecommenderService.java">
+        <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/rest/UserRestApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4275">
-              <caret line="192" column="13" selection-start-line="192" selection-start-column="13" selection-end-line="192" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="434">
+              <caret line="65" column="20" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/MovieService.java">
+        <entry file="file://$PROJECT_DIR$/coreModel/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="73" column="12" selection-start-line="73" selection-start-column="12" selection-end-line="73" selection-end-column="12" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="560">
+              <caret line="24" column="46" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/rest/MovieRestApi.java">
+        <entry file="file://$PROJECT_DIR$/recommender/dataLoader/src/main/scala/com/ywq/dataloader/DataLoader.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="153" selection-start-line="153" selection-end-line="153" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="-1125">
+              <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/core/Tag.java">
+        <entry file="file://$PROJECT_DIR$/recommender/dataLoader/src/main/scala/com/ywq/dataloader/DataLoad2.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="16" column="62" selection-start-line="16" selection-start-column="62" selection-end-line="16" selection-end-column="62" />
-              <folding>
-                <element signature="e#970#971#0" expanded="true" />
-                <element signature="e#1002#1003#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="225">
+              <caret line="32" column="7" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/TagService.java">
+        <entry file="file://$PROJECT_DIR$/coreModel/src/main/scala/com/ywq/scala/model/Model.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="61" column="52" selection-start-line="61" selection-start-column="52" selection-end-line="61" selection-end-column="52" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="485">
+              <caret line="56" selection-start-line="56" selection-end-line="56" />
             </state>
           </provider>
         </entry>
@@ -195,6 +204,7 @@
       <list>
         <option value="Unnamed" />
         <option value="Class" />
+        <option value="Package Object" />
       </list>
     </option>
   </component>
@@ -215,7 +225,6 @@
         <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/core/User.java" />
         <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/request/RegisterUserRequest.java" />
         <option value="$PROJECT_DIR$/businessServer/src/main/resources/log4j2.xml" />
-        <option value="$PROJECT_DIR$/businessServer/pom.xml" />
         <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/request/LoginUserRegister.java" />
         <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/request/LoginUserRequest.java" />
         <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/request/UpdateUserGenresRequest.java" />
@@ -223,22 +232,31 @@
         <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/recom/Recommendation.java" />
         <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/request/GetHybirdRecommendation.java" />
         <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/request/GetStreamRecsRequest.java" />
-        <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/request/GetHybirdRecommendationRequest.java" />
         <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/request/GetUserCFRequest.java" />
         <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/request/GetContentBasedRecommendation.java" />
         <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/request/GetContentBasedRecommendationRequest.java" />
-        <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/UserService.java" />
         <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/core/Movie.java" />
         <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/request/GetGenresTopMoviesRequest.java" />
         <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/request/GetHotRecommendationRequest.java" />
         <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/request/GetRateMoreMoviesRequest.java" />
         <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/request/GetNewMoviesRequest.java" />
         <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/request/GetFuzzySearchMoviesRequest.java" />
-        <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/RecommenderService.java" />
+        <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/core/Tag.java" />
+        <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/request/GetItemCFMoviesRequest.java" />
+        <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/request/GetHybirdRecommendationRequest.java" />
+        <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/core/Rating.java" />
+        <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/ratingService.java" />
+        <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/request/GetGenresMoviesRequest.java" />
+        <option value="$PROJECT_DIR$/businessServer/pom.xml" />
+        <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/rest/MovieRestApi.java" />
         <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/MovieService.java" />
         <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/TagService.java" />
-        <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/core/Tag.java" />
-        <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/rest/MovieRestApi.java" />
+        <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/UserService.java" />
+        <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/RatingService.java" />
+        <option value="$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/RecommenderService.java" />
+        <option value="$PROJECT_DIR$/coreModel/pom.xml" />
+        <option value="$PROJECT_DIR$/recommender/dataLoader/src/main/scala/com/ywq/dataloader/DataLoader.scala" />
+        <option value="$PROJECT_DIR$/coreModel/src/main/scala/com/ywq/scala/model/Model.scala" />
       </list>
     </option>
   </component>
@@ -342,7 +360,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="CatdeaLogs" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -353,124 +374,28 @@
             <path>
               <item name="MovieRecommendSystem" type="b2602c69:ProjectViewProjectNode" />
               <item name="MovieRecommendSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="businessServer" type="462c0819:PsiDirectoryNode" />
+              <item name="coreModel" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MovieRecommendSystem" type="b2602c69:ProjectViewProjectNode" />
               <item name="MovieRecommendSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="businessServer" type="462c0819:PsiDirectoryNode" />
+              <item name="coreModel" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MovieRecommendSystem" type="b2602c69:ProjectViewProjectNode" />
               <item name="MovieRecommendSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="businessServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MovieRecommendSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MovieRecommendSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="businessServer" type="462c0819:PsiDirectoryNode" />
+              <item name="coreModel" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MovieRecommendSystem" type="b2602c69:ProjectViewProjectNode" />
               <item name="MovieRecommendSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="businessServer" type="462c0819:PsiDirectoryNode" />
+              <item name="coreModel" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MovieRecommendSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MovieRecommendSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="businessServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MovieRecommendSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MovieRecommendSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="businessServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MovieRecommendSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MovieRecommendSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="businessServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="request" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MovieRecommendSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MovieRecommendSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="businessServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="rest" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MovieRecommendSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MovieRecommendSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="businessServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MovieRecommendSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MovieRecommendSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="businessServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MovieRecommendSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MovieRecommendSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="businessServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MovieRecommendSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MovieRecommendSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="businessServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MovieRecommendSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MovieRecommendSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="businessServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="scala" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MovieRecommendSystem" type="b2602c69:ProjectViewProjectNode" />
@@ -483,23 +408,54 @@
               <item name="recommender" type="462c0819:PsiDirectoryNode" />
               <item name="dataLoader" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="MovieRecommendSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MovieRecommendSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="recommender" type="462c0819:PsiDirectoryNode" />
+              <item name="dataLoader" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MovieRecommendSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MovieRecommendSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="recommender" type="462c0819:PsiDirectoryNode" />
+              <item name="dataLoader" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MovieRecommendSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MovieRecommendSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="recommender" type="462c0819:PsiDirectoryNode" />
+              <item name="dataLoader" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="scala" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MovieRecommendSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MovieRecommendSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="recommender" type="462c0819:PsiDirectoryNode" />
+              <item name="dataLoader" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="scala" type="462c0819:PsiDirectoryNode" />
+              <item name="dataloader" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="ObjectMapper&#9;FILE&#9;jar://C:/Users/ywq/.m2/repository/org/elasticsearch/elasticsearch/5.6.2/elasticsearch-5.6.2.jar!/org/elasticsearch/index/mapper/ObjectMapper.class" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561085399764" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561123053103" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="File.Encoding" />
@@ -758,17 +714,19 @@
       <workItem from="1560934279563" duration="2623000" />
       <workItem from="1561030901170" duration="7448000" />
       <workItem from="1561081796242" duration="3714000" />
+      <workItem from="1561091003680" duration="2620000" />
+      <workItem from="1561116478584" duration="6255000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66605000" />
+    <option name="totallyTimeSpent" value="75480000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21558245" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22012103" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -815,54 +773,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/MovieRecommendSystem.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/package-info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/businessServer/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="38" column="24" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/website/src/app/app.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/recommender/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/website/src/app/app.component.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/website/src/app/app.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/core/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="385">
@@ -917,13 +827,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/package-info.java">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/utils/Constant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="55" selection-start-line="55" selection-end-line="55" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/utils/Configure.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1640,9 +1543,6 @@
     <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/utils/package-info.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/recommender/dataLoader/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1625">
@@ -1661,20 +1561,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="700">
           <caret line="28" column="66" selection-start-line="28" selection-start-column="66" selection-end-line="28" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/businessServer/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="154" column="37" lean-forward="true" selection-start-line="154" selection-start-column="37" selection-end-line="154" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/rest/UserRestApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="65" column="20" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -1703,13 +1589,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="8" column="50" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/request/GetHybirdRecommendationRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="50" column="25" selection-start-line="50" selection-start-column="25" selection-end-line="50" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -1776,20 +1655,119 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/UserService.java">
+    <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/request/GetItemCFMoviesRequest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2950">
-          <caret line="133" column="17" selection-start-line="133" selection-start-column="17" selection-end-line="133" selection-end-column="17" />
+        <state relative-caret-position="485">
+          <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+          <folding>
+            <element signature="e#199#200#0" expanded="true" />
+            <element signature="e#225#226#0" expanded="true" />
+            <element signature="e#260#261#0" expanded="true" />
+            <element signature="e#290#291#0" expanded="true" />
+            <element signature="e#402#403#0" expanded="true" />
+            <element signature="e#437#438#0" expanded="true" />
+            <element signature="e#467#468#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/request/GetHybirdRecommendationRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="77" selection-start-line="12" selection-start-column="77" selection-end-line="12" selection-end-column="77" />
+          <folding>
+            <element signature="e#214#215#0" expanded="true" />
+            <element signature="e#244#245#0" expanded="true" />
+            <element signature="e#290#291#0" expanded="true" />
+            <element signature="e#328#329#0" expanded="true" />
+            <element signature="e#355#356#0" expanded="true" />
+            <element signature="e#381#382#0" expanded="true" />
+            <element signature="e#416#417#0" expanded="true" />
+            <element signature="e#446#447#0" expanded="true" />
+            <element signature="e#473#474#0" expanded="true" />
+            <element signature="e#499#500#0" expanded="true" />
+            <element signature="e#534#535#0" expanded="true" />
+            <element signature="e#564#565#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/core/Rating.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="13" column="67" selection-start-line="13" selection-start-column="67" selection-end-line="13" selection-end-column="67" />
+          <folding>
+            <element signature="e#452#453#0" expanded="true" />
+            <element signature="e#482#483#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/core/Tag.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="16" column="62" selection-start-line="16" selection-start-column="62" selection-end-line="16" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/request/GetGenresMoviesRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="7" column="59" selection-start-line="7" selection-start-column="59" selection-end-line="7" selection-end-column="59" />
+          <folding>
+            <element signature="e#157#158#0" expanded="true" />
+            <element signature="e#186#187#0" expanded="true" />
+            <element signature="e#230#231#0" expanded="true" />
+            <element signature="e#266#267#0" expanded="true" />
+            <element signature="e#293#294#0" expanded="true" />
+            <element signature="e#319#320#0" expanded="true" />
+            <element signature="e#354#355#0" expanded="true" />
+            <element signature="e#384#385#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coreModel/src/main/java/com/ywq/java/model/Constant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/businessServer/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="28" column="33" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/rest/MovieRestApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="72" column="45" lean-forward="true" selection-start-line="72" selection-start-column="45" selection-end-line="72" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/RecommenderService.java">
+    <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/MovieService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4275">
-          <caret line="192" column="13" selection-start-line="192" selection-start-column="13" selection-end-line="192" selection-end-column="13" />
+        <state relative-caret-position="400">
+          <caret line="32" column="62" lean-forward="true" selection-start-line="32" selection-start-column="62" selection-end-line="32" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/RatingService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="51" column="82" selection-start-line="51" selection-start-column="82" selection-end-line="51" selection-end-column="82" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1798,42 +1776,66 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/TagService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="61" column="52" selection-start-line="61" selection-start-column="52" selection-end-line="61" selection-end-column="52" />
+        <state relative-caret-position="178">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/model/core/Tag.java">
+    <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/RecommenderService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="16" column="62" selection-start-line="16" selection-start-column="62" selection-end-line="16" selection-end-column="62" />
-          <folding>
-            <element signature="e#970#971#0" expanded="true" />
-            <element signature="e#1002#1003#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-322">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/MovieService.java">
+    <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="73" column="12" selection-start-line="73" selection-start-column="12" selection-end-line="73" selection-end-column="12" />
+        <state relative-caret-position="178">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/rest/MovieRestApi.java">
+    <entry file="file://$PROJECT_DIR$/businessServer/src/main/java/com/ywq/server/rest/UserRestApi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="153" selection-start-line="153" selection-end-line="153" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="434">
+          <caret line="65" column="20" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coreModel/src/main/scala/com/ywq/scala/model/package.scala">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coreModel/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="24" column="46" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/recommender/dataLoader/src/main/scala/com/ywq/dataloader/DataLoad2.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="32" column="7" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coreModel/src/main/scala/com/ywq/scala/model/Model.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="485">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/recommender/dataLoader/src/main/scala/com/ywq/dataloader/DataLoader.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1125">
+          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -1892,7 +1894,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>businessServer</last-edited>
+          <last-edited>coreModel</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

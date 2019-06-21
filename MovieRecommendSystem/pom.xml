@@ -11,6 +11,7 @@
         <module>recommender</module>
         <module>businessServer</module>
         <module>website</module>
+        <module>coreModel</module>
     </modules>
     <packaging>pom</packaging>
 

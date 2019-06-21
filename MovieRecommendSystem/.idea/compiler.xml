@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="businessServer" />
+        <module name="coreModel" />
         <module name="dataLoader" />
         <module name="kakaStream" />
         <module name="OfflineRecommender" />
@@ -17,6 +18,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="businessServer" target="1.8" />
+      <module name="coreModel" target="1.8" />
       <module name="dataLoader" target="1.8" />
       <module name="kakaStream" target="1.8" />
       <module name="MovieRecommendSystem" target="1.8" />
