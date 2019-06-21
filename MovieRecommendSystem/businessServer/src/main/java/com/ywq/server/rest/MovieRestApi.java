@@ -1,11 +1,13 @@
 package com.ywq.server.rest;
 
 import com.ywq.server.model.core.Movie;
+import com.ywq.server.model.core.Tag;
 import com.ywq.server.model.core.User;
 import com.ywq.server.model.recom.Recommendation;
 import com.ywq.server.model.request.*;
 import com.ywq.server.service.MovieService;
 import com.ywq.server.service.RecommenderService;
+import com.ywq.server.service.TagService;
 import com.ywq.server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,6 +31,9 @@ public class MovieRestApi {
 
     @Autowired
     private MovieService movieService;
+
+    @Autowired
+    private TagService tagService;
 
     //***********首页功能**********
 
@@ -130,7 +135,7 @@ public class MovieRestApi {
     //***********电影的详细页面***********
 
     //获取单个电影的信息
-    @RequestMapping(path = "/info/{id}", produces = "application/json", method = RequestMethod.GET)
+    @RequestMapping(path = "/info/{mid}", produces = "application/json", method = RequestMethod.GET)
     @ResponseBody
     public Model getMovieInfo(@PathVariable("mid") int mid,Model model) {
         model.addAttribute("success",true);
@@ -140,12 +145,21 @@ public class MovieRestApi {
     }
 
     //需要提供能够给电影打标签的功能
-    public Model addTagToMovie(int mid, String tagname, Model model) {
-        return null;
+    @RequestMapping(path = "/addtag/{mid}", produces = "application/json", method = RequestMethod.GET)
+    @ResponseBody
+    public void addTagToMovie(@PathVariable("mid") int mid, @RequestParam("username") String username, @RequestParam("tagname") String tagname, Model model) {
+        User user =userService.findUserByUsername(username);
+        Tag tag=new Tag(user.getUid(),mid,tagname,System.currentTimeMillis()/1000);
+        tagService.addTagToMovie(tag);
     }
 
     //需要提供获取电影的所有标签信息
-    public Model getMovieTags(int mid, Model model) {
+    @RequestMapping(path = "/tags/{mid}", produces = "application/json", method = RequestMethod.GET)
+    @ResponseBody
+    public Model getMovieTags(@PathVariable("mid") int mid, Model model) {
+        model.addAttribute("success",true);
+        model.addAttribute("movies",tagService.getMovieTags(mid));
+
         return null;
     }
 
