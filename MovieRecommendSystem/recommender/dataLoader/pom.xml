@@ -19,6 +19,14 @@
     </properties>
 
     <dependencies>
+
+        <!-- 加入核心模型 -->
+        <dependency>
+            <groupId>com.ywq</groupId>
+            <artifactId>coreModel</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>

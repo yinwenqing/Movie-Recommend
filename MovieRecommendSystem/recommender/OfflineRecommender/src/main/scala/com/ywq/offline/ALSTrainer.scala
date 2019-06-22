@@ -1,22 +1,15 @@
 package com.ywq.offline
 
 import breeze.numerics.sqrt
-import com.atguigu.offline.OfflineRecommender
+import com.ywq.offline.OfflineRecommender
+import com.ywq.scala.model.{MongoConf, MongoConfig, MovieRating}
 import org.apache.spark.SparkConf
 import org.apache.spark.mllib.recommendation.{ALS, Rating}
 import org.apache.spark.mllib.recommendation.MatrixFactorizationModel
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SparkSession
+import com.ywq.java.model.Constant._
 
-case class MovieRating(val uid: Int, val mid: Int, val score: Double, val timestamp: Int)
-
-/**
-  * MongoDB的连接配置
-  *
-  * @param uri MongoDB的连接
-  * @param db  MongoDB要操作数据库
-  */
-case class MongoConfig(val uri: String, val db: String)
 
 object ALSTrainer {
   def main(args: Array[String]): Unit = {
@@ -43,8 +36,8 @@ object ALSTrainer {
     val RatingRDD = spark
       .read
       .option("uri", mongoConfig.uri)
-      .option("collection", MONGODB_RATING_COLLECTION)
-      .format("com.mongodb.spark.sql")
+      .option("collection", MONGO_RATING_COLLECTION)
+      .format(MONGO_DRIVER_CLASS)
       .load()
       .as[MovieRating]
       .rdd

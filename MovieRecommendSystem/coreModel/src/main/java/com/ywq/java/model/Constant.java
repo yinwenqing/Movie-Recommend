@@ -37,7 +37,7 @@ public class Constant {
     public static final String MONGO_MOVIE_RECS_COLLECTION="MovieRecs";
 
     //实时推荐电影表
-    public static final String MONGO_STREAN_RECS_COLLECTION="StreamRecs";
+    public static final String MONGO_STREAM_RECS_COLLECTION="StreamRecs";
 
     //**************** ES *******************
     //使用的index
@@ -53,7 +53,10 @@ public class Constant {
     //**************** LOG ********************
     public static final String USER_RATING_LOG_PREFIX="USER_RATING_LOG_PREFIX";
 
+    //**************** Driver class************
+    public static final String MONGO_DRIVER_CLASS="com.mongodb.spark.sql";
 
+    public static final String ES_DRIVER_CLASS="org.elasticsearch.spark.sql";
 
 
 

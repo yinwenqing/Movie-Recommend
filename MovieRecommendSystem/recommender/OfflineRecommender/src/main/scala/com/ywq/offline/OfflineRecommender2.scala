@@ -1,5 +1,6 @@
 package com.ywq.offline
 
+import com.ywq.scala.model.{MongoConfig, MovieRating}
 import org.apache.spark.SparkConf
 import org.apache.spark.mllib.recommendation.{ALS, Rating}
 import org.apache.spark.sql.SparkSession

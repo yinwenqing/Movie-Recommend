@@ -26,7 +26,7 @@ case class Movie(val mid: Int, val name: String, val descri: String, val timelon
   * 3.0,                          用户对于电影的评分
   * 1260759179                    用户对于电影评分的时间
   */
-case class Rating(val uid: Int, val mid: Int, val score: Double, val timestamp: Int)
+case class MovieRating(val uid: Int, val mid: Int, val score: Double, val timestamp: Int)
 
 /**
   * tag数据集，用户对于电影的标签数据集，用“，”分割
@@ -43,7 +43,7 @@ case class Tag(val uid: Int, val mid: Int, val tag: String, val timestamp: Int)
   * @param url MongoDB的连接
   * @param db  MongoDB要操作的数据库
   */
-case class MongoConf(val uri: String, val db: String)
+case class MongoConfig(val uri: String, val db: String)
 
 /**
   * ES的连接配置
@@ -54,6 +54,23 @@ case class MongoConf(val uri: String, val db: String)
   * @param clusterName    ES集群的名称
   */
 case class ESConfig(val httpHosts: String, val transportHosts: String, val index: String, val clusterName: String)
+
+//推荐
+case class Recommendation(rid: Int, r: Double)
+
+// 用户的推荐
+case class UserRecs(uid: Int, recs: Seq[Recommendation])
+
+//电影的相似度
+case class MovieRecs(uid: Int, recs: Seq[Recommendation])
+
+/**
+  * 电影类别的推荐
+  *
+  * @param genres 电影的类别
+  * @param recs   top10的电影的集合
+  */
+case class GenresRecommendation(genres: String, recs: Seq[Recommendation])
 
 object Model {
 

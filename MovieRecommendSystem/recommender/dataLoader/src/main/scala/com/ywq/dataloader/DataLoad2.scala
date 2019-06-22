@@ -4,28 +4,14 @@ import java.net.InetAddress
 
 import com.mongodb.casbah.commons.MongoDBObject
 import com.mongodb.casbah.{MongoClient, MongoClientURI}
+import com.ywq.scala.model.{MongoConf, Movie, MovieRating, Tag}
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.{DataFrame, SparkSession}
 import org.elasticsearch.common.settings.Settings
 import org.elasticsearch.common.transport.InetSocketTransportAddress
 import org.elasticsearch.transport.client.PreBuiltTransportClient
+import com.ywq.java.model.Constant._
 
-/**
-  * rating数据集，用户对于电影的评分数据集，用“，”分割
-  * 1,                            用户的ID
-  * 1029,                         电影的ID
-  * 3.0,                          用户对于电影的评分
-  * 1260759179                    用户对于电影评分的时间
-  */
-//case class Rating(val uid: Int, val mid: Int, val score: Double, val timestamp: Int)
-
-/**
-  * MongoDB 的连接配置
-  *
-  * @param url MongoDB的连接
-  * @param db  MongoDB要操作的数据库
-  */
-//case class MongoConf(val uri: String, val db: String)
 
 /**
   * 导入测试数据到MongoDB
@@ -35,10 +21,6 @@ object DataLoad2 {
   val MOVIE_DATA_PATH = "C:\\Users\\ywq\\Desktop\\Movie-Recommend\\MovieRecommendSystem\\recommender\\dataLoader\\src\\main\\resources\\small\\movies2.csv"
   val RATING_DATA_PATH = "C:\\Users\\ywq\\Desktop\\Movie-Recommend\\MovieRecommendSystem\\recommender\\dataLoader\\src\\main\\resources\\small\\rating2.csv"
   val TAGS_DATA_PATH = "C:\\Users\\ywq\\Desktop\\Movie-Recommend\\MovieRecommendSystem\\recommender\\dataLoader\\src\\main\\resources\\small\\tags.csv"
-
-  val MONGODB_MOVIE_COLLECTION = "Movie2"
-  val MONGODB_RATING_COLLECTION = "Rating2"
-  val MONGODB_TAG_COLLECTION = "Tag"
 
 
   //程序的入口
@@ -70,7 +52,7 @@ object DataLoad2 {
     //将RatingRDD装换为DataFrame
     val ratingDF = ratingRDD.map(item => {
       val attr = item.split(",")
-      Rating(attr(0).toInt, attr(1).toInt, attr(2).toDouble, attr(3).toInt)
+      MovieRating(attr(0).toInt, attr(1).toInt, attr(2).toDouble, attr(3).toInt)
     }).toDF()
 
     val tagRDD = spark.sparkContext.textFile(TAGS_DATA_PATH);
@@ -128,30 +110,30 @@ object DataLoad2 {
 
     //如果MongoDB中有对应的数据库，那么应该删除
     mongoClient(mongoConfig
-      .db)(MONGODB_MOVIE_COLLECTION).dropCollection()
-    mongoClient(mongoConfig.db)(MONGODB_RATING_COLLECTION).dropCollection()
+      .db)(MONGO_MOVIE_COLLECTION).dropCollection()
+    mongoClient(mongoConfig.db)(MONGO_RATING_COLLECTION).dropCollection()
 
     //将当前数据写入到MongoDB
     movieDF
       .write
       .option("uri", mongoConfig.uri)
-      .option("collection", MONGODB_MOVIE_COLLECTION)
+      .option("collection", MONGO_MOVIE_COLLECTION)
       .mode("overwrite")
-      .format("com.mongodb.spark.sql")
+      .format(MONGO_DRIVER_CLASS)
       .save()
 
     ratingDF
       .write
       .option("uri", mongoConfig.uri)
-      .option("collection", MONGODB_RATING_COLLECTION)
+      .option("collection", MONGO_RATING_COLLECTION)
       .mode("overwrite")
-      .format("com.mongodb.spark.sql")
+      .format(MONGO_DRIVER_CLASS)
       .save()
 
     //对数据表建索引
-    mongoClient(mongoConfig.db)(MONGODB_MOVIE_COLLECTION).createIndex(MongoDBObject("mid" -> 1))
-    mongoClient(mongoConfig.db)(MONGODB_RATING_COLLECTION).createIndex(MongoDBObject("uid" -> 1))
-    mongoClient(mongoConfig.db)(MONGODB_RATING_COLLECTION).createIndex(MongoDBObject("mid" -> 1))
+    mongoClient(mongoConfig.db)(MONGO_MOVIE_COLLECTION).createIndex(MongoDBObject("mid" -> 1))
+    mongoClient(mongoConfig.db)(MONGO_RATING_COLLECTION).createIndex(MongoDBObject("uid" -> 1))
+    mongoClient(mongoConfig.db)(MONGO_RATING_COLLECTION).createIndex(MongoDBObject("mid" -> 1))
 
     //关闭MongoDB的连接
     mongoClient.close()
