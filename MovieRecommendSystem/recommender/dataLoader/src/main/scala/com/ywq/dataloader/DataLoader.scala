@@ -16,17 +16,35 @@ import com.ywq.java.model.Constant._
 //数据的主加载服务
 object DataLoader {
 
-  val MOVIE_DATA_PATH = "C:\\Users\\ywq\\Desktop\\Movie-Recommend\\MovieRecommendSystem\\recommender\\dataLoader\\src\\main\\resources\\small\\movies.csv"
-  val RATING_DATA_PATH = "C:\\Users\\ywq\\Desktop\\Movie-Recommend\\MovieRecommendSystem\\recommender\\dataLoader\\src\\main\\resources\\small\\ratings.csv"
-  val TAGS_DATA_PATH = "C:\\Users\\ywq\\Desktop\\Movie-Recommend\\MovieRecommendSystem\\recommender\\dataLoader\\src\\main\\resources\\small\\tags.csv"
-
-
-  //程序的入口
+  /**
+    * @param args
+    */
   def main(args: Array[String]): Unit = {
+
+    if (args.length != 7) {
+      System.err.println("Usage: java -jar dataloader.jar <mongo_server> <es_http_server> <es_trans_server> <es_cluster_name> <movie_data_path> <rating_data_path> <tag_data_path>\n"
+        + "   <mongo_server> is the mongo server to connect, eg.192.168.43.31:27017  \n"
+        + "   <es_http_server>  is the elasticsearch http servers eg.192.168.43.31:9200,192.168.43.32:9200 \n"
+        + "   <es_trans_server>  is the elasticsearch transport servers eg.192.168.43.31:9300,192.168.43.32:9030 \n"
+        + "   <es_cluster_name>  is the elasticsearch cluster name \n"
+        + "   <movie_data_path> is the movie_data_path \n"
+        + "   <rating_data_path>  is the rating_data_path \n"
+        + "   <tag_data_path> is the tag_data_path")
+      System.exit(1)
+    }
+
+    val mongo_server = args(0)
+    val es_http_server = args(1)
+    val es_trans_server = args(2)
+    val es_cluster_name = args(3)
+
+    val movie_data_path = args(4)
+    val rating_data_path = args(5)
+    val tag_data_path = args(6)
 
     val config = Map(
       "spark.cores" -> "local[*]",
-      "mongo.uri" -> "mongodb://192.168.43.31:27017/recommender",
+      "mongo.uri" -> ("mongodb://192.168.43.31:27017/" + MONGO_DATABASE),
       "mongo.db" -> "recommender",
       "es.httpHosts" -> "192.168.43.31:9200",
       "es.transportHosts" -> "192.168.43.31:9300",
@@ -43,21 +61,21 @@ object DataLoader {
     import spark.implicits._
 
     //将movie、rating、tag数据集加载近来
-    val movieRDD = spark.sparkContext.textFile(MOVIE_DATA_PATH);
+    val movieRDD = spark.sparkContext.textFile(movie_data_path);
     //将MovieRDD装换为DataFrame
     val movieDF = movieRDD.map(item => {
       val attr = item.split("\\^")
       Movie(attr(0).toInt, attr(1).trim, attr(2).trim, attr(3).trim, attr(4).trim, attr(5).trim, attr(6).trim, attr(7).trim, attr(8).trim, attr(9).trim);
     }).toDF()
 
-    val ratingRDD = spark.sparkContext.textFile(RATING_DATA_PATH);
+    val ratingRDD = spark.sparkContext.textFile(rating_data_path);
     //将MovieRDD装换为DataFrame
     val ratingDF = ratingRDD.map(item => {
       val attr = item.split(",")
       MovieRating(attr(0).toInt, attr(1).toInt, attr(2).toDouble, attr(3).toInt)
     }).toDF()
 
-    val tagRDD = spark.sparkContext.textFile(TAGS_DATA_PATH);
+    val tagRDD = spark.sparkContext.textFile(tag_data_path);
     //将MovieRDD装换为DataFrame
     val tagDF = tagRDD.map(item => {
       val attr = item.split(",")

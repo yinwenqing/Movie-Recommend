@@ -4,7 +4,7 @@ import java.net.InetAddress
 
 import com.mongodb.casbah.commons.MongoDBObject
 import com.mongodb.casbah.{MongoClient, MongoClientURI}
-import com.ywq.scala.model.{MongoConf, Movie, MovieRating, Tag}
+import com.ywq.scala.model._
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.{DataFrame, SparkSession}
 import org.elasticsearch.common.settings.Settings
@@ -62,7 +62,7 @@ object DataLoad2 {
       Tag(attr(0).toInt, attr(1).toInt, attr(2).toString, attr(3).toInt)
     }).toDF()
 
-    implicit val mongoConfig = MongoConf(config.get("mongo.uri").get, config.get("mongo.db").get)
+    implicit val mongoConfig = MongoConfig(config.get("mongo.uri").get, config.get("mongo.db").get)
 
     //需要把数据保存到MongoDB中
     //    storeDataInMongoDB(movieDF, ratingDF, tagDF)
@@ -104,7 +104,7 @@ object DataLoad2 {
   }
 
   //将数据保存到MongoDB中的方法
-  def storeDataInMongoDB(movieDF: DataFrame, ratingDF: DataFrame)(implicit mongoConfig: MongoConf): Unit = {
+  def storeDataInMongoDB(movieDF: DataFrame, ratingDF: DataFrame)(implicit mongoConfig: MongoConfig): Unit = {
     //新建一个到MongoDB的连接
     val mongoClient = MongoClient(MongoClientURI(mongoConfig.uri))
 
