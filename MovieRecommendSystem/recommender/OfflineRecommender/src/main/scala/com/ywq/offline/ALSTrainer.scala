@@ -2,7 +2,7 @@ package com.ywq.offline
 
 import breeze.numerics.sqrt
 import com.ywq.offline.OfflineRecommender
-import com.ywq.scala.model.{MongoConf, MongoConfig, MovieRating}
+import com.ywq.scala.model.{ MongoConfig, MovieRating}
 import org.apache.spark.SparkConf
 import org.apache.spark.mllib.recommendation.{ALS, Rating}
 import org.apache.spark.mllib.recommendation.MatrixFactorizationModel

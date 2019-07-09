@@ -51,7 +51,7 @@ case class UserRecs(uid:Int, recs:Seq[Recommendation])
 //电影的相似度
 case class MovieRecs(uid:Int, recs:Seq[Recommendation])
 
-object OfflineRecommender {
+object OfflineRecommender2 {
 
   val MONGODB_RATING_COLLECTION2 = "Rating2"
   val MONGODB_MOVIE_COLLECTION2 = "Movie2"
