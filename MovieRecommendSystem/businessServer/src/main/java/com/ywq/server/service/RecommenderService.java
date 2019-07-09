@@ -126,7 +126,7 @@ public class RecommenderService {
      * @return
      */
     public List<Recommendation> getStreamRecsMovies(GetStreamRecsRequest request) {
-        MongoCollection<Document> streamRecsCollection = getMongoDatabase().getCollection(Constant.MONGO_STREAN_RECS_COLLECTION);
+        MongoCollection<Document> streamRecsCollection = getMongoDatabase().getCollection(Constant.MONGO_STREAM_RECS_COLLECTION);
         Document document = streamRecsCollection.find(new Document("uid", request.getUid())).first();
         List<Recommendation> result = new ArrayList<>();
         if (null == document || document.isEmpty()) {
