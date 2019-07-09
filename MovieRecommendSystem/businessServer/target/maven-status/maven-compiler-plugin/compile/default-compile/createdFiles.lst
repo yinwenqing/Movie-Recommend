@@ -1,7 +1,0 @@
-com\ywq\server\service\UserService.class
-com\ywq\server\rest\UserRestApi.class
-com\ywq\server\model\request\RegisterUserRequest.class
-com\ywq\server\rest\MovieRestApi.class
-com\ywq\server\utils\Constant.class
-com\ywq\server\model\core\User.class
-com\ywq\server\utils\Configure.class
