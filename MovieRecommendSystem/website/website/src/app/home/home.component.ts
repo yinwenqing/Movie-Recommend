@@ -108,11 +108,11 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getGuessMovies();
+    // this.getGuessMovies();
     this.getHotMovies();
     this.getNewMovies();
     this.getRateMoreMovies();
-    this.getWishMovies();
+    // this.getWishMovies();
   }
 
   updateGenres():void {
@@ -133,7 +133,7 @@ export class HomeComponent implements OnInit {
           }
         },
         err => {
-          console.log('Somethi,g went wrong!');
+          console.log('Something went wrong!');
         }
       );
   }
@@ -144,7 +144,7 @@ export class HomeComponent implements OnInit {
 
   getGuessMovies():void{
     this.httpService
-      .get(constant.BUSSINESS_SERVER_URL+'rest/movie/guess?num=6&username='+this.loginService.user.username)
+      .get(constant.BUSSINESS_SERVER_URL+'rest/movies/guess?num=6&username='+this.loginService.user.username)
       .subscribe(
         data => {
           if(data['success'] == true){
@@ -152,13 +152,13 @@ export class HomeComponent implements OnInit {
           }
         },
         err => {
-          console.log('Somethi,g went wrong!');
+          console.log('Something went wrong!');
         }
       );
   }
   getHotMovies():void{
     this.httpService
-      .get(constant.BUSSINESS_SERVER_URL+'rest/movie/hot?num=6&username='+this.loginService.user.username)
+      .get(constant.BUSSINESS_SERVER_URL+'rest/movies/hot?num=6&username='+this.loginService.user.username)
       .subscribe(
         data => {
           if(data['success'] == true){
@@ -179,7 +179,7 @@ export class HomeComponent implements OnInit {
           }
         },
         err => {
-          console.log('Somethi,g went wrong!');
+          console.log('Something went wrong!');
         }
       );
   }
@@ -202,7 +202,7 @@ export class HomeComponent implements OnInit {
     this.newMovies.push(movie);
     this.newMovies.push(movie);*/
     this.httpService
-      .get(constant.BUSSINESS_SERVER_URL+'rest/movie/new?num=6&username='+this.loginService.user.username)
+      .get(constant.BUSSINESS_SERVER_URL+'rest/movies/new?num=6&username='+this.loginService.user.username)
       .subscribe(
         data => {
           if(data['success'] == true){
@@ -210,13 +210,13 @@ export class HomeComponent implements OnInit {
           }
         },
         err => {
-          console.log('Somethi,g went wrong!');
+          console.log('Something went wrong!');
         }
       );
   }
   getRateMoreMovies():void{
     this.httpService
-      .get(constant.BUSSINESS_SERVER_URL+'rest/movie/rate?num=6&username='+this.loginService.user.username)
+      .get(constant.BUSSINESS_SERVER_URL+'rest/movies/rate?num=6&username='+this.loginService.user.username)
       .subscribe(
         data => {
           if(data['success'] == true){
@@ -224,13 +224,13 @@ export class HomeComponent implements OnInit {
           }
         },
         err => {
-          console.log('Somethi,g went wrong!');
+          console.log('Something went wrong!');
         }
       );
   }
   getWishMovies():void{
     this.httpService
-      .get(constant.BUSSINESS_SERVER_URL+'rest/movie/wish?num=6&username='+this.loginService.user.username)
+      .get(constant.BUSSINESS_SERVER_URL+'rest/movies/wish?num=6&username='+this.loginService.user.username)
       .subscribe(
         data => {
           if(data['success'] == true){
@@ -238,7 +238,7 @@ export class HomeComponent implements OnInit {
           }
         },
         err => {
-          console.log('Somethi,g went wrong!');
+          console.log('Something went wrong!');
         }
       );
   }

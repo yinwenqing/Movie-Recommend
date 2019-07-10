@@ -8,17 +8,15 @@ import com.ywq.server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 //用于处理user相关的动作
+@CrossOrigin
 @Controller
-@RequestMapping("/test/users")
+@RequestMapping("/rest/users")
 public class UserRestApi {
 
     @Autowired
@@ -55,7 +53,16 @@ public class UserRestApi {
     @RequestMapping(path = "/login", produces = "application/json", method = RequestMethod.GET)
     @ResponseBody
     public Model loginUser(@RequestParam("username")String username, @RequestParam("password")String password, Model model) {
-        model.addAttribute("success", userService.loginUser(new LoginUserRequest(username, password)));
+
+        boolean flag = userService.loginUser(new LoginUserRequest(username, password));
+        if (flag){
+            model.addAttribute("success", flag);
+            User user = userService.findUserByUsername(username);
+            System.out.println(user.getUid());
+            System.out.println(user);
+            model.addAttribute("user",user);
+        }
+        model.addAttribute("success", flag);
         return model;
     }
 
@@ -66,6 +73,8 @@ public class UserRestApi {
      * @param genres
      * @param model
      */
+    @RequestMapping(path = "/genres", produces = "application/json", method = RequestMethod.GET)
+    @ResponseBody
     public void addGeners(@RequestParam("username")String username, @RequestParam("genres")String genres, Model model) {
         List<String> genresList=new ArrayList<>();
         for(String gen:genres.split("\\|")){

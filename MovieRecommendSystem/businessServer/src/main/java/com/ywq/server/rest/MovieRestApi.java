@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Random;
 
 //用于处理Movie相关的功能
+@CrossOrigin
 @Controller
 @RequestMapping("/rest/movies")
 public class MovieRestApi {
@@ -97,9 +98,9 @@ public class MovieRestApi {
     }
 
     //提供获取热门推荐信息的接口
-    @RequestMapping(path = "/host", produces = "application/json", method = RequestMethod.GET)
+    @RequestMapping(path = "/hot", produces = "application/json", method = RequestMethod.GET)
     @ResponseBody
-    public Model getHotRecommendations(@RequestParam("number") int num, Model model) {
+    public Model getHotRecommendations(@RequestParam("num") int num, Model model) {
         model.addAttribute("success", true);
         model.addAttribute("movies", recommenderService.getHotRecommendations(new GetHotRecommendationRequest(num)));
         return model;
@@ -108,7 +109,7 @@ public class MovieRestApi {
     //提供获取优质电影的接口
     @RequestMapping(path = "/rate", produces = "application/json", method = RequestMethod.GET)
     @ResponseBody
-    public Model getRateMoreRecommendations(@RequestParam("number") int num, Model model) {
+    public Model getRateMoreRecommendations(@RequestParam("num") int num, Model model) {
         model.addAttribute("success", true);
         model.addAttribute("movies", recommenderService.getHotRecommendations(new GetHotRecommendationRequest(num)));
         return null;
@@ -117,7 +118,7 @@ public class MovieRestApi {
     //获取最新电影的信息的接口
     @RequestMapping(path = "/new", produces = "application/json", method = RequestMethod.GET)
     @ResponseBody
-    public Model getNewRecommendations(@RequestParam("number") int num, Model model) {
+    public Model getNewRecommendations(@RequestParam("num") int num, Model model) {
         model.addAttribute("success", true);
         model.addAttribute("movies", recommenderService.getNewMovies(new GetNewMoviesRequest(num)));
 
@@ -180,7 +181,7 @@ public class MovieRestApi {
     }
 
     //需要能够提供给电影打分的功能
-    @RequestMapping(path = "/same/{mid}", produces = "application/json", method = RequestMethod.GET)
+    @RequestMapping(path = "/rate/{mid}", produces = "application/json", method = RequestMethod.GET)
     @ResponseBody
     public void rateMovie(@RequestParam("username") String username, @PathVariable("mid") int mid, @RequestParam("score") Double score, Model model) {
         User user = userService.findUserByUsername(username);

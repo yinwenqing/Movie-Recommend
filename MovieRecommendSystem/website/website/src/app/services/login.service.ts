@@ -63,7 +63,7 @@ export class LoginService {
 
         },
         err => {
-          console.log('Somethi,g went wrong!');
+          console.log('Something went wrong!');
           this.data['success'] = false;
           this.data['message'] = '服务器错误！';
         }
@@ -73,7 +73,7 @@ export class LoginService {
   register(user:User):void {
     //this.router.navigate(['/login']);
     this.http
-      .get(constant.BUSSINESS_SERVER_URL+'/rest/users/register?username='+user.username+'&password='+user.password)
+      .get(constant.BUSSINESS_SERVER_URL+'rest/users/register?username='+user.username+'&password='+user.password)
       .subscribe(
         data => {
           if(data['success'] == true){
