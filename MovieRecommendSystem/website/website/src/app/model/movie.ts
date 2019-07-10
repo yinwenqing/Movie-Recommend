@@ -8,4 +8,5 @@ export class Movie {
   issue:string;
   shoot:string;
   score:number;
+  genres:string;
 }

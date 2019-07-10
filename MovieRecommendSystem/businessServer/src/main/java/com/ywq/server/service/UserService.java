@@ -66,10 +66,6 @@ public class UserService {
         }
     }
 
-    public void fun() {
-
-    }
-
     /**
      * 用于提供注册用户的服务
      *
@@ -126,7 +122,7 @@ public class UserService {
      * @return
      */
     public void updateUserGenres(UpdateUserGenresRequest request){
-        getUserCollection().updateOne(new Document("username",request.getUsername()),new Document().append("$set",new Document("$genres",request.getGenres())));
+        getUserCollection().updateOne(new Document("username",request.getUsername()),new Document().append("$set",new Document("genres",request.getGenres())));
         getUserCollection().updateOne(new Document("username",request.getUsername()),new Document().append("$set",new Document("first",false)));
     }
 
@@ -140,4 +136,10 @@ public class UserService {
     }
 
 
+    public boolean checkUserExist(String username) {
+        if(findUserByUsername(username) !=  null){
+            return true;
+        }
+        return false;
+    }
 }
