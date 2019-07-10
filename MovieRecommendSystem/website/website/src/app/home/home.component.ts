@@ -144,7 +144,7 @@ export class HomeComponent implements OnInit {
 
   getGuessMovies():void{
     this.httpService
-      .get(constant.BUSSINESS_SERVER_URL+'rest/movies/guess?num=6&username='+this.loginService.user.username)
+      .get(constant.BUSSINESS_SERVER_URL+'rest/movie/guess?num=6&username='+this.loginService.user.username)
       .subscribe(
         data => {
           if(data['success'] == true){
@@ -158,7 +158,7 @@ export class HomeComponent implements OnInit {
   }
   getHotMovies():void{
     this.httpService
-      .get(constant.BUSSINESS_SERVER_URL+'rest/movies/hot?num=6&username='+this.loginService.user.username)
+      .get(constant.BUSSINESS_SERVER_URL+'rest/movie/hot?num=6&username='+this.loginService.user.username)
       .subscribe(
         data => {
           if(data['success'] == true){
@@ -202,7 +202,7 @@ export class HomeComponent implements OnInit {
     this.newMovies.push(movie);
     this.newMovies.push(movie);*/
     this.httpService
-      .get(constant.BUSSINESS_SERVER_URL+'rest/movies/new?num=6&username='+this.loginService.user.username)
+      .get(constant.BUSSINESS_SERVER_URL+'rest/movie/new?num=6&username='+this.loginService.user.username)
       .subscribe(
         data => {
           if(data['success'] == true){
@@ -216,7 +216,7 @@ export class HomeComponent implements OnInit {
   }
   getRateMoreMovies():void{
     this.httpService
-      .get(constant.BUSSINESS_SERVER_URL+'rest/movies/rate?num=6&username='+this.loginService.user.username)
+      .get(constant.BUSSINESS_SERVER_URL+'rest/movie/rate?num=6&username='+this.loginService.user.username)
       .subscribe(
         data => {
           if(data['success'] == true){
@@ -230,7 +230,7 @@ export class HomeComponent implements OnInit {
   }
   getWishMovies():void{
     this.httpService
-      .get(constant.BUSSINESS_SERVER_URL+'rest/movies/wish?num=6&username='+this.loginService.user.username)
+      .get(constant.BUSSINESS_SERVER_URL+'rest/movie/wish?num=6&username='+this.loginService.user.username)
       .subscribe(
         data => {
           if(data['success'] == true){

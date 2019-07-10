@@ -122,12 +122,12 @@ public class UserService {
      * @return
      */
     public void updateUserGenres(UpdateUserGenresRequest request){
-        getUserCollection().updateOne(new Document("username",request.getUsername()),new Document().append("$set",new Document("genres",request.getGenres())));
+        getUserCollection().updateOne(new Document("username",request.getUsername()),new Document().append("$set",new Document("$genres",request.getGenres())));
         getUserCollection().updateOne(new Document("username",request.getUsername()),new Document().append("$set",new Document("first",false)));
     }
 
     //通过用户名查询一个用户
-    public User findUserByUsername(String username){
+    public User findByUsername(String username){
         Document document = getUserCollection().find(new Document("username", username)).first();
         if(null == document || document.isEmpty()){
             return null;
@@ -136,10 +136,4 @@ public class UserService {
     }
 
 
-    public boolean checkUserExist(String username) {
-        if(findUserByUsername(username) !=  null){
-            return true;
-        }
-        return false;
-    }
 }

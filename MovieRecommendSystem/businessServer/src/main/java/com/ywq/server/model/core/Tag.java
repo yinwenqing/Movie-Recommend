@@ -21,6 +21,13 @@ public class Tag {
         this.timestamp = timestamp;
     }
 
+    public Tag(int uid, int mid, String tag) {
+        this.uid = uid;
+        this.mid = mid;
+        this.tag = tag;
+    }
+
+
     public int getId() {
         return id;
     }

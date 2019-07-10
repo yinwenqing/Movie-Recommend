@@ -2,62 +2,115 @@ package com.ywq.server.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.mongodb.client.model.Filters;
 import com.mongodb.util.JSON;
 import com.ywq.java.model.Constant;
 import com.ywq.server.model.core.Tag;
 import org.bson.Document;
+import org.elasticsearch.action.update.UpdateRequest;
+import org.elasticsearch.action.get.GetResponse;
+import org.elasticsearch.client.transport.TransportClient;
+import org.elasticsearch.common.xcontent.XContentFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @Service
 public class TagService {
 
+    @Autowired
     private MongoClient mongoClient;
-
     @Autowired
     private ObjectMapper objectMapper;
+    @Autowired
+    private TransportClient esClient;
 
-    private Tag documentToTag(Document document) {
-        try {
-            Tag tag = objectMapper.readValue(JSON.serialize(document), Tag.class);
-            return tag;
+    private MongoCollection<Document> tagCollection;
+
+    private MongoCollection<Document> getTagCollection(){
+        if(null == tagCollection){
+            tagCollection = mongoClient.getDatabase(Constant.MONGO_DATABASE).getCollection(Constant.MONGO_TAG_COLLECTION);
+        }
+        return tagCollection;
+    }
+
+    private Tag documentToTag(Document document){
+        try{
+            return objectMapper.readValue(JSON.serialize(document),Tag.class);
+        } catch (JsonParseException e) {
+            e.printStackTrace();
+            return null;
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+            return null;
         } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    public Document tagToDocument(Tag tag) {
-        try {
-            Document document = Document.parse(objectMapper.writeValueAsString(tag));
-            return document;
-        } catch (JsonProcessingException e) {
+    public void newTag(Tag tag){
+        try{
+            getTagCollection().insertOne(Document.parse(objectMapper.writeValueAsString(tag)));
+            updateElasticSearchIndex(tag);
+        }catch (JsonProcessingException e) {
             e.printStackTrace();
-            return null;
         }
     }
 
-    public List<Tag> getMovieTags(int mid) {
-        MongoCollection<Document> tagCollection = mongoClient.getDatabase(Constant.MONGO_DATABASE).getCollection(Constant.MONGO_TAG_COLLECTION);
-        FindIterable<Document> documents = tagCollection.find(Filters.eq("mid", mid));
+    private void updateElasticSearchIndex(Tag tag){
+        GetResponse getResponse = esClient.prepareGet(Constant.ES_INDEX,Constant.ES_TYPE,String.valueOf(tag.getMid())).get();
+        Object value = getResponse.getSourceAsMap().get("tags");
+        UpdateRequest updateRequest = new UpdateRequest(Constant.ES_INDEX,Constant.ES_TYPE,String.valueOf(tag.getMid()));
+        try{
+            if(value == null){
+                updateRequest.doc(XContentFactory.jsonBuilder().startObject().field("tags",tag.getTag()).endObject());
+            }else{
+                updateRequest.doc(XContentFactory.jsonBuilder().startObject().field("tags",value+"|"+tag.getTag()).endObject());
+            }
+            esClient.update(updateRequest).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<Tag> findMovieTags(int mid){
         List<Tag> tags = new ArrayList<>();
-        for (Document item : documents) {
-            tags.add(documentToTag(item));
+        FindIterable<Document> documents = getTagCollection().find(new Document("mid",mid));
+        for (Document document: documents) {
+            tags.add(documentToTag(document));
         }
         return tags;
     }
 
-    public void addTagToMovie(Tag tag){
-        MongoCollection<Document> tagCollection=mongoClient.getDatabase(Constant.MONGO_DATABASE).getCollection(Constant.MONGO_TAG_COLLECTION);
-        tagCollection.insertOne(tagToDocument(tag));
+    public List<Tag> findMyMovieTags(int uid, int mid){
+        List<Tag> tags = new ArrayList<>();
+        BasicDBObject basicDBObject = new BasicDBObject();
+        basicDBObject.append("uid",uid);
+        basicDBObject.append("mid",mid);
+        FindIterable<Document> documents = getTagCollection().find(basicDBObject);
+        for (Document document: documents) {
+            tags.add(documentToTag(document));
+        }
+        return tags;
+    }
+
+    public void removeTag(int eid){
+        getTagCollection().deleteOne(new Document("eid",eid));
     }
 
 }

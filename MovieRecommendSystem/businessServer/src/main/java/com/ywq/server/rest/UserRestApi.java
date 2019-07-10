@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 //用于处理user相关的动作
@@ -36,12 +35,8 @@ public class UserRestApi {
     @RequestMapping(path = "/register", produces = "application/json", method = RequestMethod.GET)
     @ResponseBody
     public Model registerUser(@RequestParam("username") String username, @RequestParam("password") String password, Model model) {
-        if(userService.checkUserExist(username)){
-            model.addAttribute("success",false);
-            model.addAttribute("message"," 用户名已经被注册！");
-            return model;
-        }
-        model.addAttribute("success",userService.registerUser(new RegisterUserRequest(username,password)));
+
+        model.addAttribute("success", userService.registerUser(new RegisterUserRequest(username, password)));
         return model;
     }
 
@@ -69,7 +64,6 @@ public class UserRestApi {
         }
         model.addAttribute("success", flag);
         return model;
-
     }
 
     /**
@@ -79,28 +73,11 @@ public class UserRestApi {
      * @param genres
      * @param model
      */
-    @RequestMapping(path = "/genres", produces = "application/json", method = RequestMethod.GET)
-    @ResponseBody
     public void addGeners(@RequestParam("username")String username, @RequestParam("genres")String genres, Model model) {
         List<String> genresList=new ArrayList<>();
         for(String gen:genres.split("\\|")){
             genresList.add(gen);
         }
         userService.updateUserGenres(new UpdateUserGenresRequest(username ,genresList));
-    }
-
-    //冷启动问题
-    @RequestMapping(value = "/pref", produces = "application/json", method = RequestMethod.GET)
-    @ResponseBody
-    public Model addPrefGenres(@RequestParam("username") String username,@RequestParam("genres") String genres,Model model) {
-        User user = userService.findUserByUsername(username);
-        user.setFirst(false);
-        List<String> genresList=new ArrayList<>();
-        for(String gen:genres.split(",")){
-            genresList.add(gen);
-        }
-        userService.updateUserGenres(new UpdateUserGenresRequest(username ,genresList));
-        model.addAttribute("success",true);
-        return model;
     }
 }

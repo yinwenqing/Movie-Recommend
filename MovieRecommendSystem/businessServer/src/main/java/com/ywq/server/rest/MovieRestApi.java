@@ -21,203 +21,240 @@ import java.util.Random;
 
 //用于处理Movie相关的功能
 @CrossOrigin
+@RequestMapping("/rest/movie")
 @Controller
-@RequestMapping("/rest/movies")
 public class MovieRestApi {
-
-    @Autowired
-    private RecommenderService recommenderService;
-
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private MovieService movieService;
-
-    @Autowired
-    private TagService tagService;
-
-    @Autowired
-    private RatingService ratingService;
 
     private Logger logger = LoggerFactory.getLogger(MovieRestApi.class);
 
-    //***********首页功能**********
+    @Autowired
+    private RecommenderService recommenderService;
+    @Autowired
+    private MovieService movieService;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private RatingService ratingService;
+    @Autowired
+    private TagService tagService;
 
     /**
-     * 提供获取实时推荐信息的接口[混合推荐]      需要考虑  冷启动问题
-     * 访问：url: /rest/movies/stream?username=abc&num=10
-     * 返回：{success:true,movies:[]}
+     * 获取推荐的电影【实时推荐6 + 内容推荐4】
      *
      * @param username
-     * @param num
      * @param model
      * @return
      */
-    @RequestMapping(path = "/stream", produces = "application/json", method = RequestMethod.GET)
+    @RequestMapping(value = "/guess", produces = "application/json", method = RequestMethod.GET)
     @ResponseBody
-    public Model getRealtimeRecommendations(@RequestParam("username") String username, @RequestParam("number") int num, Model model) {
-        User user = userService.findUserByUsername(username);
-        List<Recommendation> recommendations = recommenderService.getStreamRecsMovies(new GetStreamRecsRequest(user.getUid(), num));
-        //防止冷启动出现的问题
-        if (recommendations == null) {
-            Random random = new Random();
-            recommendations = recommenderService.getGenresTopMovies(new GetGenresTopMoviesRequest(user.getGenres().get(random.nextInt(user.getGenres().size())), num));
-
+    public Model getGuessMovies(@RequestParam("username") String username, @RequestParam("num") int num, Model model) {
+        User user = userService.findByUsername(username);
+        List<Recommendation> recommendations = recommenderService.getHybridRecommendations(new MovieHybridRecommendationRequest(user.getUid(), num));
+        if (recommendations.size() == 0) {
+            String randomGenres = user.getPrefGenres().get(new Random().nextInt(user.getPrefGenres().size()));
+            recommendations = recommenderService.getTopGenresRecommendations(new TopGenresRecommendationRequest(randomGenres.split(" ")[0], num));
         }
-        List<Integer> ids = new ArrayList<>();
-        for (Recommendation recom : recommendations) {
-            ids.add(recom.getMid());
-        }
-        List<Movie> result = movieService.getMoviesByMids(ids);
         model.addAttribute("success", true);
-        model.addAttribute("movies", result);
+        model.addAttribute("movies", movieService.getHybirdRecommendeMovies(recommendations));
         return model;
     }
 
-    //提供获取离线推荐信息的接口
-    @RequestMapping(path = "/offline", produces = "application/json", method = RequestMethod.GET)
+    /**
+     * @param username
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/wish", produces = "application/json", method = RequestMethod.GET)
     @ResponseBody
-    public Model getOfflineRecommender(@RequestParam("username") String username, @RequestParam("number") int num, Model model) {
-        User user = userService.findUserByUsername(username);
-        List<Recommendation> recommendations = recommenderService.getUserCFMovies(new GetUserCFRequest(user.getUid(), num));
-        //防止冷启动出现的问题
-        if (recommendations == null) {
-            Random random = new Random();
-            recommendations = recommenderService.getGenresTopMovies(new GetGenresTopMoviesRequest(user.getGenres().get(random.nextInt(user.getGenres().size())), num));
-
+    public Model getWishMovies(@RequestParam("username") String username, @RequestParam("num") int num, Model model) {
+        User user = userService.findByUsername(username);
+        List<Recommendation> recommendations = recommenderService.getCollaborativeFilteringRecommendations(new UserRecommendationRequest(user.getUid(), num));
+        if (recommendations.size() == 0) {
+            String randomGenres = user.getPrefGenres().get(new Random().nextInt(user.getPrefGenres().size()));
+            recommendations = recommenderService.getTopGenresRecommendations(new TopGenresRecommendationRequest(randomGenres.split(" ")[0], num));
         }
-        List<Integer> ids = new ArrayList<>();
-        for (Recommendation recom : recommendations) {
-            ids.add(recom.getMid());
+        model.addAttribute("success", true);
+        model.addAttribute("movies", movieService.getRecommendeMovies(recommendations));
+        return model;
+    }
+
+    /**
+     * 获取热门推荐
+     *
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/hot", produces = "application/json", method = RequestMethod.GET)
+    @ResponseBody
+    public Model getHotMovies(@RequestParam("num") int num, Model model) {
+        List<Recommendation> recommendations = recommenderService.getHotRecommendations(new HotRecommendationRequest(num));
+        model.addAttribute("success", true);
+        model.addAttribute("movies", movieService.getRecommendeMovies(recommendations));
+        return model;
+    }
+
+    /**
+     * 获取投票最多的电影
+     *
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/rate", produces = "application/json", method = RequestMethod.GET)
+    @ResponseBody
+    public Model getRateMoreMovies(@RequestParam("num") int num, Model model) {
+        List<Recommendation> recommendations = recommenderService.getRateMoreRecommendations(new RateMoreRecommendationRequest(num));
+        model.addAttribute("success", true);
+        model.addAttribute("movies", movieService.getRecommendeMovies(recommendations));
+        return model;
+    }
+
+    /**
+     * 获取新添加的电影
+     *
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/new", produces = "application/json", method = RequestMethod.GET)
+    @ResponseBody
+    public Model getNewMovies(@RequestParam("num") int num, Model model) {
+        model.addAttribute("success", true);
+        model.addAttribute("movies", movieService.getNewMovies(new NewRecommendationRequest(num)));
+        return model;
+    }
+
+    /**
+     * 获取电影详细页面相似的电影集合
+     *
+     * @param id
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/same/{id}", produces = "application/json", method = RequestMethod.GET)
+    @ResponseBody
+    public Model getSameMovie(@PathVariable("id") int id, @RequestParam("num") int num, Model model) {
+        List<Recommendation> recommendations = recommenderService.getCollaborativeFilteringRecommendations(new MovieRecommendationRequest(id, num));
+        model.addAttribute("success", true);
+        model.addAttribute("movies", movieService.getRecommendeMovies(recommendations));
+        return model;
+    }
+
+
+    /**
+     * 获取单个电影的信息
+     *
+     * @param id
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/info/{id}", produces = "application/json", method = RequestMethod.GET)
+    @ResponseBody
+    public Model getMovieInfo(@PathVariable("id") int id, Model model) {
+        model.addAttribute("success", true);
+        model.addAttribute("movie", movieService.findByMID(id));
+        return model;
+    }
+
+    /**
+     * 模糊查询电影
+     *
+     * @param query
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/search", produces = "application/json", method = RequestMethod.GET)
+    @ResponseBody
+    public Model getSearchMovies(@RequestParam("query") String query, Model model) {
+        List<Recommendation> recommendations = recommenderService.getContentBasedSearchRecommendations(new SearchRecommendationRequest(query, 100));
+        model.addAttribute("success", true);
+        model.addAttribute("movies", movieService.getRecommendeMovies(recommendations));
+        return model;
+    }
+
+    /**
+     * 查询类别电影
+     *
+     * @param category
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/genres", produces = "application/json", method = RequestMethod.GET)
+    @ResponseBody
+    public Model getGenresMovies(@RequestParam("category") String category, Model model) {
+        List<Recommendation> recommendations = recommenderService.getContentBasedGenresRecommendations(new SearchRecommendationRequest(category, 100));
+        model.addAttribute("success", true);
+        model.addAttribute("movies", movieService.getRecommendeMovies(recommendations));
+        return model;
+    }
+
+    /**
+     * 获取用户评分过得电影
+     *
+     * @param username
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/myrate", produces = "application/json", method = RequestMethod.GET)
+    @ResponseBody
+    public Model getMyRateMovies(@RequestParam("username") String username, Model model) {
+        User user = userService.findByUsername(username);
+        model.addAttribute("success", true);
+        model.addAttribute("movies", movieService.getMyRateMovies(user.getUid()));
+        return model;
+    }
+
+
+    @RequestMapping(value = "/rate/{id}", produces = "application/json", method = RequestMethod.GET)
+    @ResponseBody
+    public Model rateToMovie(@PathVariable("id") int id, @RequestParam("score") Double score, @RequestParam("username") String username, Model model) {
+        User user = userService.findByUsername(username);
+        MovieRatingRequest request = new MovieRatingRequest(user.getUid(), id, score);
+        boolean complete = ratingService.movieRating(request);
+        //埋点日志
+        if (complete) {
+            logger.info(Constant.MOVIE_RATING_PREFIX + ":" + user.getUid() + "|" + id + "|" + request.getScore() + "|" + System.currentTimeMillis() / 1000);
         }
-        List<Movie> result = movieService.getMoviesByMids(ids);
         model.addAttribute("success", true);
-        model.addAttribute("movies", result);
-        return model;
-    }
-
-    //提供获取热门推荐信息的接口
-    @RequestMapping(path = "/hot", produces = "application/json", method = RequestMethod.GET)
-    @ResponseBody
-    public Model getHotRecommendations(@RequestParam("num") int num, Model model) {
-        model.addAttribute("success", true);
-        model.addAttribute("movies", recommenderService.getHotRecommendations(new GetHotRecommendationRequest(num)));
-        return model;
-    }
-
-    //提供获取优质电影的接口
-    @RequestMapping(path = "/rate", produces = "application/json", method = RequestMethod.GET)
-    @ResponseBody
-    public Model getRateMoreRecommendations(@RequestParam("num") int num, Model model) {
-        model.addAttribute("success", true);
-        model.addAttribute("movies", recommenderService.getHotRecommendations(new GetHotRecommendationRequest(num)));
-        return null;
-    }
-
-    //获取最新电影的信息的接口
-    @RequestMapping(path = "/new", produces = "application/json", method = RequestMethod.GET)
-    @ResponseBody
-    public Model getNewRecommendations(@RequestParam("num") int num, Model model) {
-        model.addAttribute("success", true);
-        model.addAttribute("movies", recommenderService.getNewMovies(new GetNewMoviesRequest(num)));
-
-        return null;
-    }
-
-
-    //***********模糊检索***********
-
-    //提供基于名称或者描述的模糊检索功能
-    @RequestMapping(path = "/query", produces = "application/json", method = RequestMethod.GET)
-    @ResponseBody
-    public Model getFuzzySearchMovies(@RequestParam("query") String query, @RequestParam("number") int num, Model model) {
-        model.addAttribute("success", true);
-        model.addAttribute("movies", recommenderService.getFuzzyMovies(new GetFuzzySearchMoviesRequest(query, num)));
-
+        model.addAttribute("message", " 已完成评分！");
         return model;
     }
 
 
-    //***********电影的详细页面***********
-
-    //获取单个电影的信息
-    @RequestMapping(path = "/info/{mid}", produces = "application/json", method = RequestMethod.GET)
-    @ResponseBody
-    public Model getMovieInfo(@PathVariable("mid") int mid, Model model) {
-        model.addAttribute("success", true);
-        model.addAttribute("movies", movieService.findMovieInfo(mid));
-
-        return null;
-    }
-
-    //需要提供能够给电影打标签的功能
-    @RequestMapping(path = "/addtag/{mid}", produces = "application/json", method = RequestMethod.GET)
-    @ResponseBody
-    public void addTagToMovie(@PathVariable("mid") int mid, @RequestParam("username") String username, @RequestParam("tagname") String tagname, Model model) {
-        User user = userService.findUserByUsername(username);
-        Tag tag = new Tag(user.getUid(), mid, tagname, System.currentTimeMillis() / 1000);
-        tagService.addTagToMovie(tag);
-    }
-
-    //需要提供获取电影的所有标签信息
-    @RequestMapping(path = "/tags/{mid}", produces = "application/json", method = RequestMethod.GET)
+    @RequestMapping(value = "/tag/{mid}", produces = "application/json", method = RequestMethod.GET)
     @ResponseBody
     public Model getMovieTags(@PathVariable("mid") int mid, Model model) {
         model.addAttribute("success", true);
-        model.addAttribute("movies", tagService.getMovieTags(mid));
-
-        return null;
-    }
-
-    //需要能够获取电影相似的电影推荐
-    @RequestMapping(path = "/same/{mid}", produces = "application/json", method = RequestMethod.GET)
-    @ResponseBody
-    public Model getSimMoviesRecommendation(@PathVariable("mid") int mid, @RequestParam("num") int num, Model model) {
-        model.addAttribute("success", true);
-        model.addAttribute("movies", recommenderService.getHybirdRecommendations(new GetHybirdRecommendationRequest(0.5, mid, num)));
-
+        model.addAttribute("tags", tagService.findMovieTags(mid));
         return model;
     }
 
-    //需要能够提供给电影打分的功能
-    @RequestMapping(path = "/rate/{mid}", produces = "application/json", method = RequestMethod.GET)
+    @RequestMapping(value = "/mytag/{mid}", produces = "application/json", method = RequestMethod.GET)
     @ResponseBody
-    public void rateMovie(@RequestParam("username") String username, @PathVariable("mid") int mid, @RequestParam("score") Double score, Model model) {
-        User user = userService.findUserByUsername(username);
-        Rating rating = new Rating(user.getUid(), mid, score, System.currentTimeMillis() / 1000);
-        ratingService.rateToMovie(rating);
-
-        //输出埋点日志
-        logger.info(Constant.USER_RATING_LOG_PREFIX + rating.getUid() + "|" + rating.getMid() + "|" + rating.getScore() + "|" + rating.getTimestamp());
-    }
-
-
-    //***********电影的类别页面***********
-
-    //需要能够提供影片类别的查找
-    @RequestMapping(path = "/genres", produces = "application/json", method = RequestMethod.GET)
-    @ResponseBody
-    public Model getGenresMovies(@RequestParam("genres") String genres, @RequestParam("num") int num, Model model) {
+    public Model getMyTags(@PathVariable("mid") int mid, @RequestParam("username") String username, Model model) {
+        User user = userService.findByUsername(username);
         model.addAttribute("success", true);
-        model.addAttribute("movies", recommenderService.getGenresMovies(new GetGenresMoviesRequest(genres,num)));
-
-        return null;
+        model.addAttribute("tags", tagService.findMyMovieTags(user.getUid(), mid));
+        return model;
     }
 
-
-    //***********用户的空间页面***********
-
-    //需要提供用户的所有电影评分记录
-    public Model getUSerRatings(String username, Model model) {
-
-        return null;
+    @RequestMapping(value = "/newtag/{mid}", produces = "application/json", method = RequestMethod.GET)
+    @ResponseBody
+    public Model addMyTags(@PathVariable("mid") int mid, @RequestParam("tagname") String tagname, @RequestParam("username") String username, Model model) {
+        User user = userService.findByUsername(username);
+        Tag tag = new Tag(user.getUid(), mid, tagname);
+        tagService.newTag(tag);
+        model.addAttribute("success", true);
+        model.addAttribute("tag", tag);
+        return model;
     }
 
-    //需要能够获取图表数据
-    public Model getUserChart(String username, Model model) {
-        return null;
+    @RequestMapping(value = "/stat", produces = "application/json", method = RequestMethod.GET)
+    @ResponseBody
+    public Model getMyRatingStat(@RequestParam("username") String username, Model model) {
+        User user = userService.findByUsername(username);
+        model.addAttribute("success", true);
+        model.addAttribute("stat", ratingService.getMyRatingStat(user));
+        return model;
     }
-
 
 }
+

@@ -6,16 +6,22 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Sorts;
 import com.mongodb.util.JSON;
 import com.ywq.java.model.Constant;
 import com.ywq.server.model.core.Movie;
+import com.ywq.server.model.core.Rating;
+import com.ywq.server.model.recom.Recommendation;
+import com.ywq.server.model.request.NewRecommendationRequest;
 import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class MovieService {
@@ -27,56 +33,123 @@ public class MovieService {
     private ObjectMapper objectMapper;
 
     private MongoCollection<Document> movieCollection;
+    private MongoCollection<Document> averageMoviesScoreCollection;
+    private MongoCollection<Document> rateCollection;
 
     private MongoCollection<Document> getMovieCollection(){
         if(null == movieCollection){
-            this.movieCollection=mongoClient.getDatabase(Constant.MONGO_DATABASE).getCollection(Constant.MONGO_MOVIE_COLLECTION);
+            movieCollection = mongoClient.getDatabase(Constant.MONGO_DATABASE).getCollection(Constant.MONGO_MOVIE_COLLECTION);
         }
-        return this.movieCollection;
+        return movieCollection;
+    }
+
+    private MongoCollection<Document> getAverageMoviesScoreCollection(){
+        if(null == averageMoviesScoreCollection){
+            averageMoviesScoreCollection = mongoClient.getDatabase(Constant.MONGO_DATABASE).getCollection(Constant.MONGO_AVERAGE_MOVIES);
+        }
+        return averageMoviesScoreCollection;
+    }
+
+    private MongoCollection<Document> getRateCollection(){
+        if(null == rateCollection){
+            rateCollection = mongoClient.getDatabase(Constant.MONGO_DATABASE).getCollection(Constant.MONGO_RATING_COLLECTION);
+        }
+        return rateCollection;
+    }
+
+    public List<Movie> getRecommendeMovies(List<Recommendation> recommendations){
+        List<Integer> ids = new ArrayList<>();
+        for (Recommendation rec: recommendations) {
+            ids.add(rec.getMid());
+        }
+        return getMovies(ids);
+    }
+
+    public List<Movie> getHybirdRecommendeMovies(List<Recommendation> recommendations){
+        List<Integer> ids = new ArrayList<>();
+        for (Recommendation rec: recommendations) {
+            ids.add(rec.getMid());
+        }
+        return getMovies(ids);
+    }
+
+    public List<Movie> getMovies(List<Integer> mids){
+        FindIterable<Document> documents = getMovieCollection().find(Filters.in("mid",mids));
+        List<Movie> movies = new ArrayList<>();
+        for (Document document: documents) {
+            movies.add(documentToMovie(document));
+        }
+        return movies;
     }
 
     private Movie documentToMovie(Document document){
-        try {
-            Movie movie = objectMapper.readValue(JSON.serialize(document), Movie.class);
-            Document score = mongoClient.getDatabase(Constant.MONGO_DATABASE).getCollection(Constant.MONGO_AVERAGE_MOVIES).find(Filters.eq("mid",movie.getMid())).first();
-            if(score==null||score.isEmpty()){
+        Movie movie = null;
+        try{
+            movie = objectMapper.readValue(JSON.serialize(document),Movie.class);
+            Document score = getAverageMoviesScoreCollection().find(Filters.eq("mid",movie.getMid())).first();
+            if(null == score || score.isEmpty()){
                 movie.setScore(0D);
-            }else{
-                movie.setScore(score.getDouble("avg"));
             }
-            return movie;
-        } catch (IOException e) {
+            else{
+                movie.setScore((Double) score.get("avg",0D));
+            }
+        }catch (IOException e) {
             e.printStackTrace();
-            return null;
         }
+        return movie;
     }
 
-    private Document movieToDocument(Movie movie){
-        try {
-            Document document = Document.parse(objectMapper.writeValueAsString(movie));
-            return document;
-        } catch (JsonProcessingException e) {
+    private Rating documentToRating(Document document){
+        Rating rating = null;
+        try{
+            rating = objectMapper.readValue(JSON.serialize(document),Rating.class);
+        }catch (IOException e) {
             e.printStackTrace();
-            return null;
         }
+        return rating;
     }
 
-    public List<Movie> getMoviesByMids(List<Integer> ids){
-        List<Movie> result = new ArrayList<>();
-        FindIterable<Document> documents=getMovieCollection().find(Filters.in("mid", ids));
-        for(Document item:documents){
-            result.add(documentToMovie(item));
-        }
-        return result;
+    public boolean movieExist(int mid){
+        return null != findByMID(mid);
     }
 
-    //获取电影信息
-    public Movie findMovieInfo(int mid){
-        Document movieDocument = getMovieCollection().find(new Document("mid", mid)).first();
-        if(movieDocument==null|| movieDocument.isEmpty()){
+    public Movie findByMID(int mid){
+        Document document = getMovieCollection().find(new Document("mid",mid)).first();
+        if(document == null || document.isEmpty()){
             return null;
         }
-        return documentToMovie(movieDocument);
+        return documentToMovie(document);
+    }
+
+    public void removeMovie(int mid){
+        getMovieCollection().deleteOne(new Document("mid",mid));
+    }
+
+
+    public List<Movie> getMyRateMovies(int uid){
+        FindIterable<Document> documents = getRateCollection().find(Filters.eq("uid",uid));
+        List<Integer> ids = new ArrayList<>();
+        Map<Integer,Double> scores = new HashMap<>();
+        for (Document document: documents) {
+            Rating rating = documentToRating(document);
+            ids.add(rating.getMid());
+            scores.put(rating.getMid(),rating.getScore());
+        }
+        List<Movie> movies = getMovies(ids);
+        for (Movie movie: movies) {
+            movie.setScore(scores.getOrDefault(movie.getMid(),movie.getScore()));
+        }
+
+        return movies;
+    }
+
+    public List<Movie> getNewMovies(NewRecommendationRequest request){
+        FindIterable<Document> documents = getMovieCollection().find().sort(Sorts.descending("issue")).limit(request.getSum());
+        List<Movie> movies = new ArrayList<>();
+        for (Document document: documents) {
+            movies.add(documentToMovie(document));
+        }
+        return movies;
     }
 
 }

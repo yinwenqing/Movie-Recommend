@@ -1,7 +1,12 @@
 package com.ywq.server.model.core;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.Date;
+
 public class Rating {
-    private int _id;
+    @JsonIgnore
+    private String _id;
 
     private int uid;
 
@@ -11,19 +16,14 @@ public class Rating {
 
     private long timestamp;
 
-    public Rating(int uid, int mid, double score, long timestamp) {
+    public Rating() {
+    }
+
+    public Rating(int uid, int mid, double score) {
         this.uid = uid;
         this.mid = mid;
         this.score = score;
-        this.timestamp = timestamp;
-    }
-
-    public int get_id() {
-        return _id;
-    }
-
-    public void set_id(int _id) {
-        this._id = _id;
+        this.timestamp = new Date().getTime();
     }
 
     public int getUid() {
@@ -56,5 +56,13 @@ public class Rating {
 
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 }
