@@ -2,6 +2,8 @@ package com.ywq.server.model.core;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.util.ArrayList;
+
 //电影类
 public class Movie {
 
@@ -12,7 +14,7 @@ public class Movie {
 
     private String name;
 
-    private String descri;
+        private String descri;
 
     private String timelong;
 
@@ -43,6 +45,9 @@ public class Movie {
         this.actors = actors;
         this.directors = directors;
         this.score = score;
+    }
+    ArrayList
+    public Movie() {
     }
 
     public int getId() {

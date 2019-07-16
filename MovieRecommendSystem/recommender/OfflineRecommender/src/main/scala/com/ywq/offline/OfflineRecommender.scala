@@ -17,7 +17,7 @@ object OfflineRecommender {
 
     val config = Map(
       "spark.cores" -> "local[*]",
-      "mongo.uri" -> "mongodb://192.168.43.31:27017/recommender",
+      "mongo.uri" -> "mongodb://ywq5:27017/recommender",
       "mongo.db" -> "reommender"
     )
 

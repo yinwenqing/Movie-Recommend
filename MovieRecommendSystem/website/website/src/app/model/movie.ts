@@ -9,4 +9,6 @@ export class Movie {
   shoot:string;
   score:number;
   genres:string;
+  directors:string;
+  actors:string;
 }

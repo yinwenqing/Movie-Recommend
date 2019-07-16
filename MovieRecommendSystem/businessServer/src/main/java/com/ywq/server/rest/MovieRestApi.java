@@ -15,7 +15,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -50,7 +49,7 @@ public class MovieRestApi {
     public Model getGuessMovies(@RequestParam("username") String username, @RequestParam("num") int num, Model model) {
         User user = userService.findByUsername(username);
         List<Recommendation> recommendations = recommenderService.getHybridRecommendations(new MovieHybridRecommendationRequest(user.getUid(), num));
-        if (recommendations.size() == 0) {
+        if (recommendations.size() != 0) {
             String randomGenres = user.getPrefGenres().get(new Random().nextInt(user.getPrefGenres().size()));
             recommendations = recommenderService.getTopGenresRecommendations(new TopGenresRecommendationRequest(randomGenres.split(" ")[0], num));
         }

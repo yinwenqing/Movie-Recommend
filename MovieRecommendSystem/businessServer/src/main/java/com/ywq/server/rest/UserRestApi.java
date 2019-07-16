@@ -57,7 +57,7 @@ public class UserRestApi {
         boolean flag = userService.loginUser(new LoginUserRequest(username, password));
         if (flag){
             model.addAttribute("success", flag);
-            User user = userService.findUserByUsername(username);
+            User user = userService.findByUsername(username);
             System.out.println(user.getUid());
             System.out.println(user);
             model.addAttribute("user",user);

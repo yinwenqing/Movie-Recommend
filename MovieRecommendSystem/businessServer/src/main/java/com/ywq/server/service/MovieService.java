@@ -1,6 +1,5 @@
 package com.ywq.server.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
@@ -8,6 +7,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Sorts;
 import com.mongodb.util.JSON;
+import com.mongodb.util.JSONSerializers;
 import com.ywq.java.model.Constant;
 import com.ywq.server.model.core.Movie;
 import com.ywq.server.model.core.Rating;
@@ -84,8 +84,10 @@ public class MovieService {
 
     private Movie documentToMovie(Document document){
         Movie movie = null;
+        StringBuilder buf = new StringBuilder();
+        JSONSerializers.getLegacy().serialize(document, buf);
         try{
-            movie = objectMapper.readValue(JSON.serialize(document),Movie.class);
+            movie = objectMapper.readValue(buf.toString(),Movie.class);
             Document score = getAverageMoviesScoreCollection().find(Filters.eq("mid",movie.getMid())).first();
             if(null == score || score.isEmpty()){
                 movie.setScore(0D);

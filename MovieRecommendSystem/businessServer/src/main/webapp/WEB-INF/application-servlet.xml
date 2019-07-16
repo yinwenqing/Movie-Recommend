@@ -15,7 +15,7 @@
     <mvc:annotation-driven>
         <!-- 给MVC注册消息转换器 -->
         <mvc:message-converters register-defaults="true">
-            <bean class="org.springframework.http.converter.StringHttpMessageConverter"></bean>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter" />
             <bean class="org.springframework.http.converter.BufferedImageHttpMessageConverter"/>
             <bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>
             <!-- 用于JSON的转化 -->

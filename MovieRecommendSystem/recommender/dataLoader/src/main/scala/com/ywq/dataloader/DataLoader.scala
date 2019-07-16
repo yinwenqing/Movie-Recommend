@@ -23,9 +23,9 @@ object DataLoader {
 
     if (args.length != 7) {
       System.err.println("Usage: java -jar dataloader.jar <mongo_server> <es_http_server> <es_trans_server> <es_cluster_name> <movie_data_path> <rating_data_path> <tag_data_path>\n"
-        + "   <mongo_server> is the mongo server to connect, eg.192.168.43.31:27017  \n"
-        + "   <es_http_server>  is the elasticsearch http servers eg.192.168.43.31:9200,192.168.43.32:9200 \n"
-        + "   <es_trans_server>  is the elasticsearch transport servers eg.192.168.43.31:9300,192.168.43.32:9030 \n"
+        + "   <mongo_server> is the mongo server to connect, eg.ywq5:27017  \n"
+        + "   <es_http_server>  is the elasticsearch http servers eg.ywq5:9200,ywq5:9200 \n"
+        + "   <es_trans_server>  is the elasticsearch transport servers eg.ywq5:9300,ywq5:9030 \n"
         + "   <es_cluster_name>  is the elasticsearch cluster name \n"
         + "   <movie_data_path> is the movie_data_path \n"
         + "   <rating_data_path>  is the rating_data_path \n"
@@ -44,10 +44,10 @@ object DataLoader {
 
     val config = Map(
       "spark.cores" -> "local[*]",
-      "mongo.uri" -> ("mongodb://192.168.43.31:27017/" + MONGO_DATABASE),
+      "mongo.uri" -> ("mongodb://ywq5:27017/" + MONGO_DATABASE),
       "mongo.db" -> "recommender",
-      "es.httpHosts" -> "192.168.43.31:9200",
-      "es.transportHosts" -> "192.168.43.31:9300",
+      "es.httpHosts" -> "ywq5:9200",
+      "es.transportHosts" -> "ywq5:9300",
       "ex.index" -> ES_INDEX,
       "es.clusterName" -> "es-cluster"
     )

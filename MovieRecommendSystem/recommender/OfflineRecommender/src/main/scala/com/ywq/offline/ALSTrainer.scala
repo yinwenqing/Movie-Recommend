@@ -10,13 +10,12 @@ import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SparkSession
 import com.ywq.java.model.Constant._
 
-
 object ALSTrainer {
   def main(args: Array[String]): Unit = {
 
     val config = Map(
       "spark.cores" -> "local[*]",
-      "mongo.uri" -> "mongodb://192.168.43.31:27017/recommender",
+      "mongo.uri" -> "mongodb://ywq5:27017/recommender",
       "mongo.db" -> "reommender"
     )
 

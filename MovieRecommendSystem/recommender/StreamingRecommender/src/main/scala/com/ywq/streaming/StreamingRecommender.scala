@@ -13,8 +13,8 @@ import scala.collection.JavaConversions._
 import com.ywq.java.model.Constant._
 
 object ConnHelper extends Serializable {
-  lazy val jedis = new Jedis("192.168.43.31")
-  lazy val mongoClient = MongoClient(MongoClientURI("mongodb://192.168.43.31:27017/recommender"))
+  lazy val jedis = new Jedis("ywq5")
+  lazy val mongoClient = MongoClient(MongoClientURI("mongodb://ywq5:27017/recommender"))
 }
 
 case class MongoConfig(uri: String, db: String)
@@ -38,7 +38,7 @@ object StreamingRecommender {
 
     val config = Map(
       "spark.cores" -> "local[*]",
-      "mongodb.uri" -> "mongodb://192.168.43.31:27017/recommender",
+      "mongodb.uri" -> "mongodb://ywq5:27017/recommender",
       "mongodb.db" -> "recommender",
       "kafka.topic" -> "recommender"
     )
@@ -72,7 +72,7 @@ object StreamingRecommender {
 
     //创建到Kafka的连接
     val kafkaPara = Map(
-      "bootstrap.servers" -> "192.168.43.31:9092",
+      "bootstrap.servers" -> "ywq5:9092",
       "key.deserializer" -> classOf[StringDeserializer],
       "value.deserializer" -> classOf[StringDeserializer],
       "group.id" -> "recommender",

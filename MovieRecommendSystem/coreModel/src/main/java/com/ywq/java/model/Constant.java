@@ -60,6 +60,5 @@ public class Constant {
 
     public static final String ES_DRIVER_CLASS="org.elasticsearch.spark.sql";
 
-
-    public static final int REDIS_MOVIE_RATING_QUEUE_SIZE =0;
+    public static final int REDIS_MOVIE_RATING_QUEUE_SIZE =10;
 }

@@ -49,7 +49,7 @@ export class MdetailComponent implements OnInit {
           }
         },
         err => {
-          console.log('Somethi,g went wrong!');
+          console.log('Something went wrong!');
         }
       );
   }
@@ -73,7 +73,7 @@ export class MdetailComponent implements OnInit {
           }
         },
         err => {
-          console.log('Somethi,g went wrong!');
+          console.log('Something went wrong!');
         }
       );
   }
@@ -89,7 +89,7 @@ export class MdetailComponent implements OnInit {
           }
         },
         err => {
-          console.log('Somethi,g went wrong!');
+          console.log('Something went wrong!');
         }
       );
   }
@@ -105,7 +105,7 @@ export class MdetailComponent implements OnInit {
           }
         },
         err => {
-          console.log('Somethi,g went wrong!');
+          console.log('Something went wrong!');
         }
       );
   }
@@ -120,7 +120,7 @@ export class MdetailComponent implements OnInit {
           }
         },
         err => {
-          console.log('Somethi,g went wrong!');
+          console.log('Something went wrong!');
         }
       );
   }
